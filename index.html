@@ -54,7 +54,7 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-12">
-            <h1 class="text-5xl font-bold text-indigo-800">MLT(WEEK 1-12 revision Notes)</h1>
+            <h1 class="text-5xl font-bold text-indigo-800">Comprehensive Machine Learning Guide</h1>
             <p class="text-xl text-gray-600 mt-4">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
         </header>
 
@@ -64,9 +64,9 @@
             <ul class="list-disc list-inside space-y-2 text-lg">
                 <li><a href="#unsupervised"><strong>Part 1:</strong> Unsupervised Learning (PCA, K-Means, GMM)</a></li>
                 <li><a href="#estimation"><strong>Part 2:</strong> Parameter Estimation (MLE, MAP)</a></li>
-                <li><a href="#supervised"><strong>Part 3:</strong> Supervised Learning (Regression, Classification, SVM, Perceptron)</a></li>
+                <li><a href="#supervised"><strong>Part 3:</strong> Supervised Learning (Regression, Classification Models)</a></li>
                 <li><a href="#ensemble"><strong>Part 4:</strong> Ensemble Methods & Neural Networks</a></li>
-                <li><a href="#pyq-theory"><strong>Part 5:</strong> Important Theoretical Points from PYQs</a></li>
+                <li><a href="#pyq-theory"><strong>Part 5:</strong> Important Theoretical Points & Methods from PYQs</a></li>
             </ul>
         </div>
 
@@ -191,6 +191,17 @@
                 <li><strong>Entropy (Binary):</strong> $$E(p) = -p \log_2(p) - (1-p) \log_2(1-p)$$ where $$p$$ is the proportion of positive samples.</li>
                 <li><strong>Information Gain (IG):</strong> $$IG = E_{parent} - [\gamma E_{left} + (1-\gamma) E_{right}]$$ where $$\gamma = \frac{n_{left}}{n_{parent}}$$</li>
             </ul>
+             <h4 class="text-xl font-semibold mt-6 mb-2">K-Nearest Neighbors (KNN)</h4>
+            <ul class="list-disc list-inside space-y-3">
+                <li><strong>Prediction Algorithm:</strong>
+                    <ol class="list-decimal list-inside ml-4 mt-2">
+                        <li>Find the distance (e.g., Euclidean) from the test point to all training points.</li>
+                        <li>Sort the distances and select the 'k' nearest neighbors.</li>
+                        <li>Return the most frequently occurring label among the neighbors (majority vote).</li>
+                    </ol>
+                </li>
+                <li><strong>Hyperparameters:</strong> The number of neighbors 'k' and the distance metric are chosen by the user, often tuned using cross-validation.</li>
+            </ul>
             <h4 class="text-xl font-semibold mt-6 mb-2">Perceptron Algorithm</h4>
             <ul class="list-disc list-inside space-y-3">
                 <li><strong>Model:</strong> $$\hat{y} = \text{sign}(w^T x)$$</li>
@@ -248,20 +259,28 @@
 
         <!-- Part 5: PYQ Theory -->
         <section id="pyq-theory" class="content-section">
-            <h2 class="text-3xl font-bold text-gray-800">Part 5: Important Theoretical Points from PYQs</h2>
+            <h2 class="text-3xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
+             <h3 class="text-2xl font-semibold text-gray-700">8. Hyperparameter Tuning & Cross-Validation</h3>
              <ul class="list-disc list-inside space-y-4 text-lg">
-                <li><strong>Bias-Variance Tradeoff:</strong> High bias models (e.g., linear regression on non-linear data) underfit. High variance models (e.g., deep decision trees) overfit. The goal is to find a balance for the lowest test error.</li>
-                <li><strong>Model Complexity vs. Error:</strong> As complexity increases, training error decreases, while test error forms a U-shape.</li>
-                <li><strong>Regularization:</strong> Its main purpose is to penalize large coefficients to reduce overfitting and model variance. In practice, $$\lambda$$ is a tuning knob found via cross-validation.</li>
-                <li><strong>Ensemble Methods:</strong> Bagging reduces variance using complex models in parallel. Boosting reduces bias using weak models sequentially.</li>
-                <li><strong>SVMs:</strong> A point is a support vector only if its dual variable $$\alpha_i^* > 0$$. For linearly separable data, soft-margin and hard-margin SVMs produce the same result.</li>
+                <li><strong>Hyperparameter Tuning:</strong> The process of finding the optimal hyperparameters (e.g., $$\lambda$$ in Ridge, 'k' in KNN) for a model on a given dataset.</li>
+                <li><strong>k-Fold Cross-Validation:</strong>
+                    <ol class="list-decimal list-inside ml-4 mt-2">
+                        <li>Split the training data into 'k' equal folds.</li>
+                        <li>For each hyperparameter value you want to test:</li>
+                        <li>Iterate 'k' times. In each iteration, use one fold as the validation set and the remaining k-1 folds as the training set.</li>
+                        <li>Train the model on the training set and evaluate its performance (e.g., loss) on the validation set.</li>
+                        <li>Average the performance across all 'k' folds.</li>
+                        <li>Select the hyperparameter value that resulted in the best average performance.</li>
+                    </ol>
+                </li>
+                <li><strong>Leave-One-Out Cross-Validation (LOOCV):</strong> A special case of k-fold where k equals the number of data points (n). In each iteration, one point is used for validation and the rest for training. It's computationally expensive but provides an almost unbiased estimate of the test error.</li>
              </ul>
         </section>
 
     </div>
 
     <footer class="text-center p-4 mt-8 bg-gray-100 border-t border-gray-200">
-        <p class="text-gray-600">BY ~KarTiK🍁(NOTE:Made with the help of AI)</p>
+        <p class="text-gray-600">BY ~KarTiK🍁</p>
     </footer>
 
     <script>
