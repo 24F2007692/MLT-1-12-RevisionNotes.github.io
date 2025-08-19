@@ -260,7 +260,15 @@
         <!-- Part 5: PYQ Theory -->
         <section id="pyq-theory" class="content-section">
             <h2 class="text-3xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
-             <h3 class="text-2xl font-semibold text-gray-700">8. Hyperparameter Tuning & Cross-Validation</h3>
+             <h3 class="text-2xl font-semibold text-gray-700">8. Key Theoretical Concepts</h3>
+             <ul class="list-disc list-inside space-y-4 text-lg">
+                <li><strong>Bias-Variance Tradeoff:</strong> High bias models (e.g., linear regression on non-linear data) underfit. High variance models (e.g., deep decision trees) overfit. The goal is to find a balance for the lowest test error.</li>
+                <li><strong>Model Complexity vs. Error:</strong> As complexity increases, training error decreases, while test error forms a U-shape.</li>
+                <li><strong>Regularization:</strong> Its main purpose is to penalize large coefficients to reduce overfitting and model variance. In practice, $$\lambda$$ is a tuning knob found via cross-validation.</li>
+                <li><strong>Ensemble Methods:</strong> Bagging reduces variance using complex models in parallel. Boosting reduces bias using weak models sequentially.</li>
+                <li><strong>SVMs:</strong> A point is a support vector only if its dual variable $$\alpha_i^* > 0$$. For linearly separable data, soft-margin and hard-margin SVMs produce the same result.</li>
+             </ul>
+             <h3 class="text-2xl font-semibold text-gray-700">9. Hyperparameter Tuning & Cross-Validation</h3>
              <ul class="list-disc list-inside space-y-4 text-lg">
                 <li><strong>Hyperparameter Tuning:</strong> The process of finding the optimal hyperparameters (e.g., $$\lambda$$ in Ridge, 'k' in KNN) for a model on a given dataset.</li>
                 <li><strong>k-Fold Cross-Validation:</strong>
