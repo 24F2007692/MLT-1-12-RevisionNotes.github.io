@@ -10,32 +10,40 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
         body {
-            font-family: 'Lora', serif;
+            font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
-            color: #212529;
+            color: #343a40; /* Softer black for body text */
+            font-size: 17px; /* Slightly larger base font size */
         }
 
         .katex { font-size: 1.1em !important; }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', sans-serif;
+            color: #212529; /* Darker text for headings */
+            letter-spacing: -0.5px;
+        }
+        
+        p, li {
+            line-height: 1.8; /* Increased line height for readability */
         }
 
         h2 {
-            border-bottom: 2px solid #6d28d9;
-            padding-bottom: 0.5rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 0.75rem;
+            margin-top: 3.5rem;
+            margin-bottom: 2rem;
         }
 
         h3 {
-            margin-top: 2.5rem;
-            margin-bottom: 1.25rem;
-            border-left: 3px solid #8b5cf6;
-            padding-left: 0.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #a78bfa;
+            padding-left: 1rem;
+            font-weight: 600;
         }
 
         .content-section {
@@ -74,7 +82,7 @@
         }
     </style>
 </head>
-<body class="antialiased leading-relaxed">
+<body class="antialiased">
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <header class="text-center mb-16 py-16 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg shadow-2xl text-white">
