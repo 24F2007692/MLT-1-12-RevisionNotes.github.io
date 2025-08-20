@@ -110,7 +110,8 @@
                 <li><a href="#estimation" class="mobile-nav-link"><strong>Part 2:</strong> Parameter Estimation</a></li>
                 <li><a href="#supervised" class="mobile-nav-link"><strong>Part 3:</strong> Supervised Learning</a></li>
                 <li><a href="#ensemble" class="mobile-nav-link"><strong>Part 4:</strong> Ensemble Methods</a></li>
-                <li><a href="#visualization" class="mobile-nav-link"><strong>Part 5:</strong> Loss Function Graph</a></li>
+                <li><a href="#neural-networks" class="mobile-nav-link"><strong>Part 5:</strong> Neural Networks</a></li>
+                <li><a href="#visualization" class="mobile-nav-link"><strong>Part 6:</strong> Loss Function Graph</a></li>
             </ul>
         </div>
 
@@ -124,7 +125,8 @@
                         <li><a href="#estimation"><strong>Part 2:</strong> Parameter Estimation</a></li>
                         <li><a href="#supervised"><strong>Part 3:</strong> Supervised Learning</a></li>
                         <li><a href="#ensemble"><strong>Part 4:</strong> Ensemble Methods</a></li>
-                        <li><a href="#visualization"><strong>Part 5:</strong> Loss Function Graph</a></li>
+                        <li><a href="#neural-networks"><strong>Part 5:</strong> Neural Networks</a></li>
+                        <li><a href="#visualization"><strong>Part 6:</strong> Loss Function Graph</a></li>
                     </ul>
                 </div>
             </aside>
@@ -241,6 +243,8 @@
                         <li><strong>Prediction with Kernels:</strong><div class="text-center mt-2">$$\hat{y}_{test} = \text{sign}\left(\sum_{i \in SVs} \alpha_i^* y_i k(x_i, x_{test}) + b\right)$$</div></li>
                         <li><strong>Total Margin Width:</strong><div class="text-center mt-2">$$\text{Total Margin} = \frac{2}{||w||}$$</div></li>
                     </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Model Summary & Gradients</h4>
+                    <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Model/Layer</th><th class="p-3 border">Prediction $$\hat{y}$$</th><th class="p-3 border">Loss</th><th class="p-3 border">Gradient</th><th class="p-3 border">Intuition</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">Linear Regression</td><td class="p-3 border">$$w^T x$$</td><td class="p-3 border">$$\frac{1}{2}(y-\hat{y})^2$$</td><td class="p-3 border">$$(\hat{y}-y)x$$</td><td class="p-3 border">Predicts a continuous value; minimizes squared error.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Logistic Regression (Binary)</td><td class="p-3 border">$$\sigma(w^T x)$$</td><td class="p-3 border">$$-[y\log(\hat{y}) + (1-y)\log(1-\hat{y})]$$</td><td class="p-3 border">$$(\hat{y}-y)x$$</td><td class="p-3 border">Predicts a probability for Yes/No outcomes.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Softmax Regression (Multi-class)</td><td class="p-3 border">$$\text{softmax}(W^T x)$$</td><td class="p-3 border">$$-\sum_k y_k \log \hat{y}_k$$</td><td class="p-3 border">$$x(\hat{y}-y)^T$$</td><td class="p-3 border">Generalizes logistic regression for more than two classes.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">NN Hidden Layer (Backprop)</td><td class="p-3 border">$$a^{(l)} = f(W^{(l)}a^{(l-1)})$$</td><td class="p-3 border">(From Chain Rule)</td><td class="p-3 border">$$\delta^{(l)}(a^{(l-1)})^T$$</td><td class="p-3 border">Calculates intermediate features; gradient comes from later layers.</td></tr></tbody></table></div>
                 </section>
 
                 <!-- Part 4: Ensemble Methods -->
@@ -259,9 +263,54 @@
                     </ul>
                 </section>
 
-                <!-- Part 5: Visualization -->
+                <!-- Part 5: Neural Networks -->
+                <section id="neural-networks" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Neural Networks</h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">8. Core Formulas & Architecture</h3>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Computation at a Neuron</h4>
+                    <ul class="space-y-8">
+                        <li><strong>Pre-activation (Linear Combination):</strong><div class="text-center mt-2">$$z = w^T x + b$$</div></li>
+                        <li><strong>Activation (Non-linear Function):</strong><div class="text-center mt-2">$$a = g(z)$$</div></li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">General Formula for Parameters in a Layer</h4>
+                    <ul class="space-y-8">
+                        <li><strong>Parameters in layer l:</strong><div class="text-center mt-2">$$ (n_{in} \times n_{out}) + n_{out} $$</div></li>
+                        <li class="text-sm">Where $$n_{in}$$ is the number of inputs to the layer (e.g., from previous layer's neurons) and $$n_{out}$$ is the number of neurons in the current layer. The first term represents weights and the second term represents biases.</li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Common Activation Functions (Hidden Layers)</h4>
+                    <ul class="space-y-8">
+                        <li><strong>ReLU (Rectified Linear Unit):</strong><div class="text-center mt-2">$$g(z) = \max(0, z)$$</div></li>
+                        <li><strong>Sigmoid:</strong><div class="text-center mt-2">$$g(z) = \frac{1}{1 + e^{-z}}$$</div></li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Output Layer Activation for Multi-Class</h4>
+                     <ul class="space-y-8">
+                        <li><strong>Softmax:</strong><div class="text-center mt-2">$$\text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$$</div></li>
+                        <li class="text-sm">Use this in the output layer for multi-class classification. It converts a vector of raw scores (logits) into a vector of probabilities that sum to 1.</li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Output Layer & Loss (When to use which)</h4>
+                    <ul class="list-disc list-inside space-y-8">
+                        <li><strong>For Regression Problems:</strong>
+                            <ul class="list-circle list-inside ml-4 mt-2 space-y-2">
+                                <li><strong>Output Layer Activation:</strong> Linear / Identity (i.e., no activation function).</li>
+                                <li><strong>Loss Function:</strong> Mean Squared Error.<div class="text-center mt-2">$$L = (y - \hat{y})^2$$</div></li>
+                            </ul>
+                        </li>
+                        <li><strong>For Binary Classification Problems:</strong>
+                            <ul class="list-circle list-inside ml-4 mt-2 space-y-2">
+                                <li><strong>Output Layer Activation:</strong> Sigmoid.</li>
+                                <li><strong>Loss Function:</strong> Binary Cross-Entropy.<div class="text-center mt-2">$$L = -[y \log(\hat{y}) + (1-y)\log(1-\hat{y})]$$</div></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Training (Backward Pass)</h4>
+                    <ul class="space-y-8">
+                        <li><strong>Gradient Descent Update:</strong><div class="text-center mt-2">$$\theta^{(t+1)} = \theta^{(t)} - \eta \nabla L_{\theta^{(t)}}$$</div></li>
+                    </ul>
+                </section>
+
+                <!-- Part 6: Visualization -->
                 <section id="visualization" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Loss Function Visualization</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 6: Loss Function Visualization</h2>
                      <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">Interactive Loss Function Graph</h3>
                      <p class="mb-6">This graph visualizes the different convex surrogate loss functions used in classification, plotted against the margin score $$u = y(w^T x)$$. Hover over the lines to compare their penalties.</p>
                      <div class="mt-8">
