@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Machine Learning Guide</title>
+    <title>Machine Learning Formula Sheet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMVIROPtCIDJcpcDTAOT9sWlLplmg7JYTT7GoqxSrg3odEIFG" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
@@ -91,7 +91,7 @@
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <header class="text-center mb-12 md:mb-16 py-12 md:py-16 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg shadow-2xl text-white">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">MLT ET Revision Notes</h1>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">Machine Learning Formula Sheet</h1>
             <p class="text-lg md:text-xl text-indigo-100 mt-6 max-w-3xl mx-auto">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
         </header>
 
@@ -110,7 +110,7 @@
                 <li><a href="#estimation" class="mobile-nav-link"><strong>Part 2:</strong> Parameter Estimation</a></li>
                 <li><a href="#supervised" class="mobile-nav-link"><strong>Part 3:</strong> Supervised Learning</a></li>
                 <li><a href="#ensemble" class="mobile-nav-link"><strong>Part 4:</strong> Ensemble Methods</a></li>
-                <li><a href="#pyq-theory" class="mobile-nav-link"><strong>Part 5:</strong> Key Theory & Methods</a></li>
+                <li><a href="#visualization" class="mobile-nav-link"><strong>Part 5:</strong> Loss Function Graph</a></li>
             </ul>
         </div>
 
@@ -124,7 +124,7 @@
                         <li><a href="#estimation"><strong>Part 2:</strong> Parameter Estimation</a></li>
                         <li><a href="#supervised"><strong>Part 3:</strong> Supervised Learning</a></li>
                         <li><a href="#ensemble"><strong>Part 4:</strong> Ensemble Methods</a></li>
-                        <li><a href="#pyq-theory"><strong>Part 5:</strong> Key Theory & Methods</a></li>
+                        <li><a href="#visualization"><strong>Part 5:</strong> Loss Function Graph</a></li>
                     </ul>
                 </div>
             </aside>
@@ -136,20 +136,17 @@
                     <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 1: Unsupervised Learning</h2>
                     
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">1. Principal Component Analysis (PCA)</h3>
-                    <p class="mb-6">A technique for <strong>dimensionality reduction</strong> that finds orthogonal directions of maximum variance in the data.</p>
-                    
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Notation Meaning</h4>
                     <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Symbol</th><th class="p-3 border">Meaning</th></tr></thead><tbody><tr><td class="p-3 border">$$d, n$$</td><td class="p-3 border">Number of features, Number of data points</td></tr><tr><td class="p-3 border">$$x_i, \overline{x}$$</td><td class="p-3 border">i-th data point, Mean vector of dataset</td></tr><tr><td class="p-3 border">$$X$$</td><td class="p-3 border">Centered data matrix ($$d \times n$$)</td></tr><tr><td class="p-3 border">$$C$$</td><td class="p-3 border">Covariance matrix ($$d \times d$$)</td></tr><tr><td class="p-3 border">$$K$$</td><td class="p-3 border">Gram matrix ($$n \times n$$)</td></tr><tr><td class="p-3 border">$$w_j, \lambda_j$$</td><td class="p-3 border">j-th Principal Component (eigenvector of C), j-th eigenvalue</td></tr></tbody></table></div>
 
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Concepts & Formulas</h4>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Formulas</h4>
                     <ul class="space-y-8">
                         <li><strong>Centering:</strong><div class="text-center mt-2">$$x_{i}' = x_{i} - \overline{x}$$, where $$\\overline{x} = \frac{1}{n}\sum_{i=1}^{n}x_{i}$$</div></li>
                         <li><strong>Covariance Matrix:</strong><div class="text-center mt-2">$$C = \frac{1}{n}XX^T$$</div></li>
                         <li><strong>Gram Matrix:</strong><div class="text-center mt-2">$$K = X^T X$$</div></li>
-                        <li><strong>Relationship:</strong><div class="text-center mt-2">$$w_j = \frac{X v_j}{\sqrt{\lambda_j}}$$</div></li>
-                        <li><strong>Optimization (Maximizing Variance):</strong><div class="text-center mt-2">$$\max_{w: ||w||=1} w^T C w = \lambda_1$$</div></li>
-                        <li><strong>Optimization (Minimizing Reconstruction Error):</strong><div class="text-center mt-2">$$\min_{W \in \mathbb{R}^{d \times k}} \frac{1}{n} \sum_{i=1}^{n} ||x_i - WW^T x_i||^2$$</div></li>
-                        <li><strong>Projection (New Coordinates):</strong><div class="text-center mt-2">$$X' = W^T X$$</div></li>
+                        <li><strong>PC Recovery from Gram Matrix:</strong><div class="text-center mt-2">$$w_j = \frac{X v_j}{\sqrt{\lambda_j}}$$</div></li>
+                        <li><strong>Variance Maximization:</strong><div class="text-center mt-2">$$\max_{w: ||w||=1} w^T C w = \lambda_1$$</div></li>
+                        <li><strong>Projection:</strong><div class="text-center mt-2">$$X' = W^T X$$</div></li>
                         <li><strong>Reconstruction:</strong><div class="text-center mt-2">$$X_{recon} = WW^T X$$</div></li>
                         <li><strong>Reconstruction Error:</strong><div class="text-center mt-2">$$\frac{1}{n}\sum||x_i - x_{i,recon}||^2 = \sum_{j=k+1}^{d}\lambda_j$$</div></li>
                         <li><strong>Total Variance:</strong><div class="text-center mt-2">$$\text{Trace}(C) = \sum_{j=1}^{d}\lambda_j$$</div></li>
@@ -157,38 +154,28 @@
                     </ul>
 
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">2. K-Means Clustering</h3>
-                    <p class="mb-6">An iterative algorithm that partitions a dataset into K pre-defined, non-overlapping clusters.</p>
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Concepts & Formulas</h4>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Objective Function (WCSS)</h4>
+                    <ul class="space-y-8">
+                        <li><strong>Minimize:</strong><div class="text-center mt-2">$$J = \sum_{k=1}^{K} \sum_{i \text{ in cluster } k} ||x_{i} - \mu_{k}||^2$$</div></li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Lloyd's Algorithm Formulas</h4>
                      <ul class="space-y-8">
-                        <li><strong>Objective Function (WCSS):</strong><div class="text-center mt-2">$$J = \sum_{k=1}^{K} \sum_{x_i \in C_k} ||x_i - \mu_k||^2$$</div></li>
-                        <li><strong>Assignment Step:</strong><div class="text-center mt-2">$$z_i = \text{argmin}_k ||x_i - \mu_k||^2$$</div></li>
-                        <li><strong>Update Step:</strong><div class="text-center mt-2">$$\mu_k = \frac{1}{|C_k|} \sum_{x_i \in C_k} x_i$$</div></li>
-                        <li><strong>K-Means++ Initialization:</strong> A smarter way to initialize centroids to avoid poor local minima.
-                            <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
-                                <li>Choose first centroid $$\mu_1$$ uniformly at random from data points.</li>
-                                <li>For each subsequent centroid, choose point $$x_i$$ with a probability proportional to its squared distance to the <em>nearest existing</em> centroid: $$P(x_i) \propto \min_{j=1,...,k_{chosen}} ||x_i - \mu_j||^2$$</li>
-                            </ol>
-                        </li>
+                        <li><strong>Assignment Step:</strong><div class="text-center mt-2">$$z_i^{(t+1)} = \arg\min_k ||x_i - \mu_k^{(t)}||^2$$</div></li>
+                        <li><strong>Update Step (Mean):</strong><div class="text-center mt-2">$$\mu_k^{(t+1)} = \frac{\sum_{i=1}^{n} I(z_i^{(t+1)}=k) \cdot x_i}{\sum_{i=1}^{n} I(z_i^{(t+1)}=k)}$$</div></li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">K-Means++ Initialization Formula</h4>
+                    <ul class="space-y-8">
+                        <li><strong>Probability to be chosen as next center:</strong><div class="text-center mt-2">$$P(x_i) = \frac{D(x_i)^2}{\sum_{j=1}^{n} D(x_j)^2}$$</div><p class="text-center text-sm mt-2">where $$D(x_i)$$ is the distance from data point $$x_i$$ to the nearest existing center.</p></li>
                     </ul>
 
-                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">3. Gaussian Mixture Models (GMM) & EM Algorithm</h3>
-                    <p class="mb-6">A probabilistic model that assumes data is generated from a mixture of several Gaussian distributions. It performs "soft" clustering.</p>
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Concepts & Formulas</h4>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">3. Gaussian Mixture Models (GMM)</h3>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Formulas</h4>
                     <ul class="space-y-8">
-                        <li><strong>GMM Probability Density Function (PDF):</strong><div class="text-center mt-2">$$f(x;\theta)=\sum_{k=1}^{K}\pi_{k}\mathcal{N}(x;\mu_{k},\Sigma_{k})$$</div></li>
-                        <li><strong>Expectation-Maximization (EM) Algorithm:</strong> An iterative method to find the MLE or MAP estimates for parameters of latent variable models like GMM.
-                            <ul class="list-circle list-inside ml-4 mt-4 space-y-4">
-                                <li><strong>E-Step (Expectation):</strong><div class="text-center mt-2">$$\lambda_k^i = P(z_i=k | x_i; \theta) = \frac{\pi_k \mathcal{N}(x_i | \mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j \mathcal{N}(x_i | \mu_j, \Sigma_j)}$$</div></li>
-                                <li><strong>M-Step (Maximization):</strong> Update the model parameters using the responsibilities.
-                                    <div class="mt-4 space-y-4">
-                                        <p>Total responsibility for cluster k:<div class="text-center mt-2">$$N_k = \sum_{i=1}^{n} \lambda_k^i$$</div></p>
-                                        <p>New mixture weight:<div class="text-center mt-2">$$\pi_k^{new} = \frac{N_k}{n}$$</div></p>
-                                        <p>New mean:<div class="text-center mt-2">$$\mu_k^{new} = \frac{1}{N_k} \sum_{i=1}^{n} \lambda_k^i x_i$$</div></p>
-                                        <p>New covariance:<div class="text-center mt-2">$$\Sigma_k^{new} = \frac{1}{N_k} \sum_{i=1}^{n} \lambda_k^i (x_i - \mu_k^{new})(x_i - \mu_k^{new})^T$$</div></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                        <li><strong>Probability Density Function (PDF):</strong><div class="text-center mt-2">$$f(x;\theta)=\sum_{k=1}^{K}\pi_{k}\mathcal{N}(x;\mu_{k},\Sigma_{k})$$</div></li>
+                        <li><strong>E-Step (Responsibilities):</strong><div class="text-center mt-2">$$\lambda_k^i = P(z_i=k | x_i; \theta) = \frac{\pi_k \mathcal{N}(x_i | \mu_k, \Sigma_k)}{\sum_{j=1}^{K} \pi_j \mathcal{N}(x_i | \mu_j, \Sigma_j)}$$</div></li>
+                        <li><strong>M-Step (Update Mixture Weight):</strong><div class="text-center mt-2">$$\pi_k^{new} = \frac{N_k}{n}$$ where $$N_k = \sum_{i=1}^{n} \lambda_k^i$$</div></li>
+                        <li><strong>M-Step (Update Mean):</strong><div class="text-center mt-2">$$\mu_k^{new} = \frac{1}{N_k} \sum_{i=1}^{n} \lambda_k^i x_i$$</div></li>
+                        <li><strong>M-Step (Update Covariance):</strong><div class="text-center mt-2">$$\Sigma_k^{new} = \frac{1}{N_k} \sum_{i=1}^{n} \lambda_k^i (x_i - \mu_k^{new})(x_i - \mu_k^{new})^T$$</div></li>
                     </ul>
                 </section>
 
@@ -201,19 +188,13 @@
                         <li><strong>Likelihood:</strong><div class="text-center mt-2">$$L(\theta; D) = \prod_{i=1}^{n} P(x_i; \theta)$$</div></li>
                         <li><strong>Log-Likelihood:</strong><div class="text-center mt-2">$$l(\theta; D) = \sum_{i=1}^{n} \log P(x_i; \theta)$$</div></li>
                         <li><strong>MLE for Bernoulli:</strong><div class="text-center mt-2">$$\hat{p}_{MLE} = \frac{n_h}{n_h + n_t}$$</div></li>
-                         <li><strong>MLE vs. MSE:</strong> The MLE estimator for weights in a linear model ($$y = w^Tx + \epsilon, \epsilon \sim \mathcal{N}(0, \sigma^2)$$) is unbiased, meaning on average it will be correct. However, it may not always have the lowest Mean Squared Error (MSE) compared to a biased estimator like MAP.</li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bayesian Estimation (MAP)</h4>
                     <ul class="space-y-8">
-                        <li><strong>Bayes' Theorem for Parameters:</strong><div class="text-center mt-2">$$P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)} \propto \text{Likelihood} \times \text{Prior}$$</div></li>
-                        <li><strong>Bernoulli with Beta Prior:</strong> If prior is $$Beta(\alpha, \beta)$$ and data has $$n_h$$ heads, $$n_t$$ tails:
-                            <ul class="list-circle list-inside ml-4 mt-4 space-y-4">
-                                <li><strong>Posterior Distribution:</strong><div class="text-center mt-2">$$P(p|D) = Beta(\alpha + n_h, \beta + n_t)$$</div></li>
-                                <li><strong>Posterior Mean:</strong><div class="text-center mt-2">$$E[p|D] = \frac{\alpha + n_h}{\alpha + \beta + n_h + n_t}$$</div></li>
-                                <li><strong>MAP Estimate:</strong><div class="text-center mt-2">$$\hat{p}_{MAP} = \frac{\alpha + n_h - 1}{\alpha + \beta + n_h + n_t - 2}$$</div></li>
-                            </ul>
-                        </li>
-                         <li><strong>MAP vs. MSE:</strong> The MAP estimator is generally biased because it incorporates prior information. This bias can sometimes lead to a <strong>lower MSE</strong> than the unbiased MLE, especially with small datasets, because it reduces the estimator's variance.</li>
+                        <li><strong>Bayes' Theorem for Parameters:</strong><div class="text-center mt-2">$$P(\theta|D) \propto P(D|\theta)P(\theta)$$</div></li>
+                        <li><strong>Posterior for Bernoulli (Beta Prior):</strong><div class="text-center mt-2">$$P(p|D) = \text{Beta}(\alpha + n_h, \beta + n_t)$$</div></li>
+                        <li><strong>Posterior Mean:</strong><div class="text-center mt-2">$$E[p|D] = \frac{\alpha + n_h}{\alpha + \beta + n_h + n_t}$$</div></li>
+                        <li><strong>MAP for Bernoulli (Beta Prior):</strong><div class="text-center mt-2">$$\hat{p}_{MAP} = \frac{\alpha + n_h - 1}{\alpha + \beta + n_h + n_t - 2}$$</div></li>
                     </ul>
                 </section>
 
@@ -232,19 +213,11 @@
                     <ul class="space-y-8">
                         <li><strong>Ridge (L2) Loss:</strong><div class="text-center mt-2">$$L_{ridge}(w) = \text{SSE} + \frac{\lambda}{2} ||w||_2^2$$</div></li>
                         <li><strong>Ridge Solution:</strong><div class="text-center mt-2">$$\hat{w}_{ridge} = (XX^T + \lambda I)^{-1}Xy$$</div></li>
-                         <li><strong>Probabilistic View of Ridge:</strong> Ridge regression is equivalent to finding the MAP estimate of $$w$$ under the assumptions:
-                            <ul class="list-circle list-inside ml-4 mt-2 space-y-2">
-                                <li>Likelihood: $$y | x \sim \mathcal{N}(w^T x, \sigma^2 I)$$</li>
-                                <li>Prior: $$w \sim \mathcal{N}(0, \gamma^2 I)$$</li>
-                                <li>Under this setup, the regularization parameter $$\lambda = \frac{\sigma^2}{\gamma^2}$$ (i.e., noise variance / prior variance).</li>
-                            </ul>
-                        </li>
                         <li><strong>LASSO (L1) Loss:</strong><div class="text-center mt-2">$$L_{LASSO}(w) = \text{SSE} + \lambda ||w||_1$$</div></li>
                     </ul>
 
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">6. Classification Models</h3>
-                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Comparing Loss Functions (Convex Surrogates)</h4>
-                     <p class="mb-6">For a margin score $$u = y(w^T x)$$, where $$y \in \{-1, 1\}$$, different algorithms use convex approximations (surrogates) for the ideal 0-1 loss.</p>
+                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Loss Functions Table</h4>
                      <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Loss</th><th class="p-3 border">Formula L(u)</th><th class="p-3 border">Classifier</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">0-1 Loss</td><td class="p-3 border">$$\mathbb{I}[u < 0]$$</td><td class="p-3 border">Ideal (Theoretical)</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Squared Loss</td><td class="p-3 border">$$(u-1)^2$$</td><td class="p-3 border">Least Squares</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Hinge Loss</td><td class="p-3 border">$$\max(0, 1-u)$$</td><td class="p-3 border">SVM</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Logistic Loss</td><td class="p-3 border">$$\log(1+e^{-u})$$</td><td class="p-3 border">Logistic Regression</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Perceptron Loss</td><td class="p-3 border">$$\max(0, -u)$$</td><td class="p-3 border">Perceptron</td></tr></tbody></table></div>
                      
                      <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Decision Trees</h4>
@@ -252,93 +225,44 @@
                         <li><strong>Entropy (Binary):</strong><div class="text-center mt-2">$$E(p) = -p \log_2(p) - (1-p) \log_2(1-p)$$</div></li>
                         <li><strong>Information Gain (IG):</strong><div class="text-center mt-2">$$IG = E_{parent} - [\gamma E_{left} + (1-\gamma) E_{right}]$$</div></li>
                     </ul>
-                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">K-Nearest Neighbors (KNN)</h4>
-                    <ul class="list-disc list-inside space-y-4">
-                        <li><strong>Prediction Algorithm:</strong>
-                            <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
-                                <li>Find the distance (e.g., Euclidean) from the test point to all training points.</li>
-                                <li>Sort the distances and select the 'k' nearest neighbors.</li>
-                                <li>Return the most frequently occurring label among the neighbors (majority vote).</li>
-                            </ol>
-                        </li>
-                        <li><strong>Hyperparameters:</strong> The number of neighbors 'k' and the distance metric are chosen by the user, often tuned using cross-validation.</li>
-                    </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Perceptron Algorithm</h4>
                     <ul class="space-y-8">
                         <li><strong>Model:</strong><div class="text-center mt-2">$$\hat{y} = \text{sign}(w^T x)$$</div></li>
                         <li><strong>Update Rule:</strong><div class="text-center mt-2">If $$y_i(w^T x_i) \le 0$$, then $$w \leftarrow w + y_i x_i$$</div></li>
-                        <li><strong>Convergence Theorem:</strong> For a linearly separable dataset with margin $$\gamma$$, where all points lie within a ball of radius $$R$$, the Perceptron algorithm is guaranteed to converge.</li>
                         <li><strong>Mistake Bound:</strong><div class="text-center mt-2">$$t \le \left(\frac{R}{\gamma}\right)^2$$</div></li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Support Vector Machines (SVM)</h4>
                     <ul class="space-y-8">
-                        <li><strong>Functional Margin:</strong><div class="text-center mt-2">$$\hat{\gamma}_i = y_i(w^T x_i + b)$$</div></li>
                         <li><strong>Geometric Margin:</strong><div class="text-center mt-2">$$\gamma_i = \frac{y_i(w^T x_i + b)}{||w||}$$</div></li>
                         <li><strong>Hard-Margin Primal:</strong><div class="text-center mt-2">$$\min_w \frac{1}{2}||w||^2 \quad \text{s.t.} \quad y_i(w^T x_i + b) \ge 1$$</div></li>
                         <li><strong>Soft-Margin Primal:</strong><div class="text-center mt-2">$$\min_{w, \xi} \frac{1}{2}||w||^2 + C \sum \xi_i \quad \text{s.t.} \quad y_i(w^T x_i + b) \ge 1 - \xi_i, \xi_i \ge 0$$</div></li>
                         <li><strong>Dual Objective:</strong><div class="text-center mt-2">$$\max_{0 \le \alpha_i \le C} \sum \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j k(x_i, x_j)$$</div></li>
                         <li><strong>Weight Vector from Dual:</strong><div class="text-center mt-2">$$w^* = \sum_{i=1}^{n} \alpha_i^* y_i x_i$$</div></li>
                         <li><strong>Prediction with Kernels:</strong><div class="text-center mt-2">$$\hat{y}_{test} = \text{sign}\left(\sum_{i \in SVs} \alpha_i^* y_i k(x_i, x_{test}) + b\right)$$</div></li>
-                    </ul>
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Margin Calculation Explained (Hard Margin SVM)</h4>
-                    <ul class="space-y-8">
-                        <li><strong>Distance from a point $$x_i$$ to hyperplane:</strong><div class="text-center mt-2">$$\text{dist}(x_i) = \frac{|w^Tx_i + b|}{||w||}$$</div></li>
-                        <li><strong>SVM Constraint:</strong><div class="text-center mt-2">$$y_i(w^Tx_i + b) \ge 1$$</div></li>
-                        <li><strong>Support Vector Condition:</strong><div class="text-center mt-2">$$y_i(w^Tx_i + b) = 1$$</div></li>
-                        <li><strong>Distance to Support Vector:</strong><div class="text-center mt-2">$$\text{dist}_{SV} = \frac{1}{||w||}$$</div></li>
                         <li><strong>Total Margin Width:</strong><div class="text-center mt-2">$$\text{Total Margin} = \frac{2}{||w||}$$</div></li>
                     </ul>
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Conditions for Support Vectors in Soft-Margin SVM</h4>
-                    <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Case</th><th class="p-3 border">Primal Condition</th><th class="p-3 border">Dual Condition</th><th class="p-3 border">Slack ($$\xi_i$$)</th><th class="p-3 border">Meaning</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">Outside Margin</td><td class="p-3 border">$$(w^T x_i)y_i > 1$$</td><td class="p-3 border">$$\alpha_i^* = 0$$</td><td class="p-3 border">$$\xi_i = 0$$</td><td class="p-3 border">Not a support vector</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">On Margin</td><td class="p-3 border">$$(w^T x_i)y_i = 1$$</td><td class="p-3 border">$$\alpha_i^* \in (0, C)$$</td><td class="p-3 border">$$\xi_i = 0$$</td><td class="p-3 border">Support vector</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Within Margin</td><td class="p-3 border">$$1 > (w^T x_i)y_i > 0$$</td><td class="p-3 border">$$\alpha_i^* = C$$</td><td class="p-3 border">$$0 < \xi_i < 1$$</td><td class="p-3 border">Support vector</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Misclassified</td><td class="p-3 border">$$(w^T x_i)y_i < 0$$</td><td class="p-3 border">$$\alpha_i^* = C$$</td><td class="p-3 border">$$\xi_i > 1$$</td><td class="p-3 border">Support vector</td></tr></tbody></table></div>
                 </section>
 
                 <!-- Part 4: Ensemble Methods -->
                 <section id="ensemble" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 4: Ensemble Methods & Neural Networks</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 4: Ensemble Methods</h2>
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">7. Ensemble Learning</h3>
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bagging (Bootstrap Aggregating)</h4>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bagging</h4>
                     <ul class="space-y-8">
-                        <li><strong>Goal:</strong> Reduce variance.</li>
-                        <li><strong>Method:</strong> Trains deep models in parallel on bootstrap samples.</li>
                         <li><strong>Probability of a point in a bag:</strong><div class="text-center mt-2">$$1 - (1 - 1/n)^n \approx 1 - 1/e \approx 0.632$$</div></li>
                     </ul>
-                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Boosting (AdaBoost)</h4>
+                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost</h4>
                     <ul class="space-y-8">
-                        <li><strong>Goal:</strong> Reduce bias.</li>
-                        <li><strong>Method:</strong> Trains weak learners sequentially.</li>
                         <li><strong>Classifier Weight:</strong><div class="text-center mt-2">$$\alpha_t = \frac{1}{2} \ln(\frac{1 - \epsilon_t}{\epsilon_t})$$</div></li>
                         <li><strong>Data Weight Update:</strong><div class="text-center mt-2">$$D_{t+1}(i) \propto D_t(i) \exp(-\alpha_t y_i h_t(x_i))$$</div></li>
                         <li><strong>Final Classifier:</strong><div class="text-center mt-2">$$H(x) = \text{sign}\left(\sum_{t=1}^{T} \alpha_t h_t(x)\right)$$</div></li>
                     </ul>
                 </section>
 
-                <!-- Part 5: PYQ Theory -->
-                <section id="pyq-theory" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
-                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">8. Key Theoretical Concepts</h3>
-                     <ul class="list-disc list-inside space-y-4">
-                        <li><strong>Bias-Variance Tradeoff:</strong> High bias models (e.g., linear regression on non-linear data) underfit. High variance models (e.g., deep decision trees) overfit. The goal is to find a balance for the lowest test error.</li>
-                        <li><strong>Model Complexity vs. Error:</strong> As complexity increases, training error decreases, while test error forms a U-shape.</li>
-                        <li><strong>Regularization:</strong> Its main purpose is to penalize large coefficients to reduce overfitting and model variance. In practice, $$\lambda$$ is a tuning knob found via cross-validation.</li>
-                        <li><strong>Ensemble Methods:</strong> Bagging reduces variance using complex models in parallel. Boosting reduces bias using weak models sequentially.</li>
-                        <li><strong>SVMs:</strong> A point is a support vector only if its dual variable $$\alpha_i^* > 0$$. For linearly separable data, soft-margin and hard-margin SVMs produce the same result.</li>
-                     </ul>
-                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">9. Hyperparameter Tuning & Cross-Validation</h3>
-                     <ul class="list-disc list-inside space-y-4">
-                        <li><strong>Hyperparameter Tuning:</strong> The process of finding the optimal hyperparameters (e.g., $$\lambda$$ in Ridge, 'k' in KNN) for a model on a given dataset.</li>
-                        <li><strong>k-Fold Cross-Validation:</strong>
-                            <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
-                                <li>Split the training data into 'k' equal folds.</li>
-                                <li>For each hyperparameter value you want to test:</li>
-                                <li>Iterate 'k' times. In each iteration, use one fold as the validation set and the remaining k-1 folds as the training set.</li>
-                                <li>Train the model on the training set and evaluate its performance (e.g., loss) on the validation set.</li>
-                                <li>Average the performance across all 'k' folds.</li>
-                                <li>Select the hyperparameter value that resulted in the best average performance.</li>
-                            </ol>
-                        </li>
-                        <li><strong>Leave-One-Out Cross-Validation (LOOCV):</strong> A special case of k-fold where k equals the number of data points (n). In each iteration, one point is used for validation and the rest for training. It's computationally expensive but provides an almost unbiased estimate of the test error.</li>
-                     </ul>
-                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">10. Interactive Loss Function Graph</h3>
+                <!-- Part 5: Visualization -->
+                <section id="visualization" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Loss Function Visualization</h2>
+                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">Interactive Loss Function Graph</h3>
                      <p class="mb-6">This graph visualizes the different convex surrogate loss functions used in classification, plotted against the margin score $$u = y(w^T x)$$. Hover over the lines to compare their penalties.</p>
                      <div class="mt-8">
                         <canvas id="lossChart"></canvas>
