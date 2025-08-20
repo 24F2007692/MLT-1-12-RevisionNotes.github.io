@@ -18,50 +18,56 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F8F7F4;
-            color: #374151;
+            background-color: #f9fafb; /* Lighter Gray Background */
+            color: #374151; /* Darker Gray Text */
         }
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         .katex { font-size: 1.1em !important; }
         h2 {
-            border-bottom: 2px solid #6366F1;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #4f46e5; /* Bolder Indigo Border */
+            padding-bottom: 0.75rem;
+            margin-top: 3.5rem;
+            margin-bottom: 2rem;
         }
         h3 {
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #6366f1; /* Slightly lighter Indigo */
+            padding-left: 1rem;
+        }
+        h4 {
             margin-top: 2rem;
             margin-bottom: 1rem;
-            border-left: 4px solid #818CF8;
-            padding-left: 1rem;
         }
         .content-section {
             background-color: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            margin-bottom: 2rem;
+            padding: 2rem 2.5rem; /* More padding */
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+            margin-bottom: 3rem; /* More space between sections */
         }
         .toc a {
-            transition: color 0.2s;
+            transition: color 0.2s, transform 0.2s;
+            display: inline-block;
         }
         .toc a:hover {
-            color: #4F46E5;
+            color: #4338ca; /* Darker Indigo on hover */
+            transform: translateX(4px);
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased leading-relaxed">
 
-    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
-        <header class="text-center mb-12">
-            <h1 class="text-5xl font-bold text-indigo-800">Comprehensive Machine Learning Guide</h1>
-            <p class="text-xl text-gray-600 mt-4">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-5xl">
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold text-indigo-900">MLT ET REVISION(1-12)</h1>
+            <p class="text-xl text-gray-600 mt-6">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
         </header>
 
         <!-- Table of Contents -->
         <div class="content-section toc">
-            <h2 class="text-3xl font-bold text-gray-800 !mt-0">Table of Contents</h2>
-            <ul class="list-disc list-inside space-y-2 text-lg">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 !mt-0">Table of Contents</h2>
+            <ul class="list-disc list-inside space-y-3 text-lg mt-6">
                 <li><a href="#unsupervised"><strong>Part 1:</strong> Unsupervised Learning (PCA, K-Means, GMM)</a></li>
                 <li><a href="#estimation"><strong>Part 2:</strong> Parameter Estimation (MLE, MAP)</a></li>
                 <li><a href="#supervised"><strong>Part 3:</strong> Supervised Learning (Regression, Classification Models)</a></li>
@@ -72,16 +78,16 @@
 
         <!-- Part 1: Unsupervised Learning -->
         <section id="unsupervised" class="content-section">
-            <h2 class="text-3xl font-bold text-gray-800">Part 1: Unsupervised Learning</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 1: Unsupervised Learning</h2>
             
             <h3 class="text-2xl font-semibold text-gray-700">1. Principal Component Analysis (PCA)</h3>
-            <p class="mb-4">A technique for <strong>dimensionality reduction</strong> that finds orthogonal directions of maximum variance in the data.</p>
+            <p class="mb-4 text-lg">A technique for <strong>dimensionality reduction</strong> that finds orthogonal directions of maximum variance in the data.</p>
             
-            <h4 class="text-xl font-semibold mt-6 mb-2">Notation Meaning</h4>
-            <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-indigo-50"><th class="p-2 border">Symbol</th><th class="p-2 border">Meaning</th></tr></thead><tbody><tr><td class="p-2 border">$$d, n$$</td><td class="p-2 border">Number of features, Number of data points</td></tr><tr><td class="p-2 border">$$x_i, \overline{x}$$</td><td class="p-2 border">i-th data point, Mean vector of dataset</td></tr><tr><td class="p-2 border">$$X$$</td><td class="p-2 border">Centered data matrix ($$d \times n$$)</td></tr><tr><td class="p-2 border">$$C$$</td><td class="p-2 border">Covariance matrix ($$d \times d$$)</td></tr><tr><td class="p-2 border">$$K$$</td><td class="p-2 border">Gram matrix ($$n \times n$$)</td></tr><tr><td class="p-2 border">$$w_j, \lambda_j$$</td><td class="p-2 border">j-th Principal Component (eigenvector of C), j-th eigenvalue</td></tr></tbody></table></div>
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Notation Meaning</h4>
+            <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-indigo-50"><th class="p-3 border">Symbol</th><th class="p-3 border">Meaning</th></tr></thead><tbody><tr><td class="p-3 border">$$d, n$$</td><td class="p-3 border">Number of features, Number of data points</td></tr><tr><td class="p-3 border">$$x_i, \overline{x}$$</td><td class="p-3 border">i-th data point, Mean vector of dataset</td></tr><tr><td class="p-3 border">$$X$$</td><td class="p-3 border">Centered data matrix ($$d \times n$$)</td></tr><tr><td class="p-3 border">$$C$$</td><td class="p-3 border">Covariance matrix ($$d \times d$$)</td></tr><tr><td class="p-3 border">$$K$$</td><td class="p-3 border">Gram matrix ($$n \times n$$)</td></tr><tr><td class="p-3 border">$$w_j, \lambda_j$$</td><td class="p-3 border">j-th Principal Component (eigenvector of C), j-th eigenvalue</td></tr></tbody></table></div>
 
-            <h4 class="text-xl font-semibold mt-6 mb-2">Core Concepts & Formulas</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Core Concepts & Formulas</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Centering:</strong> $$x_{i}' = x_{i} - \overline{x}$$, where $$\\overline{x} = \frac{1}{n}\sum_{i=1}^{n}x_{i}$$</li>
                 <li><strong>Covariance Matrix:</strong> $$C = \frac{1}{n}XX^T$$</li>
                 <li><strong>Gram Matrix:</strong> $$K = X^T X$$</li>
@@ -96,14 +102,14 @@
             </ul>
 
             <h3 class="text-2xl font-semibold text-gray-700">2. K-Means Clustering</h3>
-            <p class="mb-4">An iterative algorithm that partitions a dataset into K pre-defined, non-overlapping clusters.</p>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Core Concepts & Formulas</h4>
-             <ul class="list-disc list-inside space-y-3">
+            <p class="mb-4 text-lg">An iterative algorithm that partitions a dataset into K pre-defined, non-overlapping clusters.</p>
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Core Concepts & Formulas</h4>
+             <ul class="list-disc list-inside space-y-4">
                 <li><strong>Objective Function (WCSS):</strong> $$J = \sum_{k=1}^{K} \sum_{x_i \in C_k} ||x_i - \mu_k||^2$$</li>
                 <li><strong>Assignment Step:</strong> $$z_i = \text{argmin}_k ||x_i - \mu_k||^2$$</li>
                 <li><strong>Update Step:</strong> $$\mu_k = \frac{1}{|C_k|} \sum_{x_i \in C_k} x_i$$</li>
                 <li><strong>K-Means++ Initialization:</strong> A smarter way to initialize centroids to avoid poor local minima.
-                    <ol class="list-decimal list-inside ml-4 mt-2">
+                    <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
                         <li>Choose first centroid $$\mu_1$$ uniformly at random from data points.</li>
                         <li>For each subsequent centroid, choose point $$x_i$$ with a probability proportional to its squared distance to the <em>nearest existing</em> centroid: $$P(x_i) \propto \min_{j=1,...,k_{chosen}} ||x_i - \mu_j||^2$$</li>
                     </ol>
@@ -111,9 +117,9 @@
             </ul>
 
             <h3 class="text-2xl font-semibold text-gray-700">3. Gaussian Mixture Models (GMM) & EM Algorithm</h3>
-            <p class="mb-4">A probabilistic model that assumes data is generated from a mixture of several Gaussian distributions. It performs "soft" clustering.</p>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Core Concepts & Formulas</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <p class="mb-4 text-lg">A probabilistic model that assumes data is generated from a mixture of several Gaussian distributions. It performs "soft" clustering.</p>
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Core Concepts & Formulas</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>GMM Probability Density Function (PDF):</strong> $$f(x;\theta)=\sum_{k=1}^{K}\pi_{k}\mathcal{N}(x;\mu_{k},\Sigma_{k})$$
                     <ul class="list-circle list-inside ml-4 mt-2">
                         <li>$$\pi_k$$: Mixture probability (weight) of component k.</li>
@@ -137,17 +143,17 @@
 
         <!-- Part 2: Parameter Estimation -->
         <section id="estimation" class="content-section">
-            <h2 class="text-3xl font-bold text-gray-800">Part 2: Parameter Estimation</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 2: Parameter Estimation</h2>
             <h3 class="text-2xl font-semibold text-gray-700">4. MLE and Bayesian (MAP) Estimation</h3>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Maximum Likelihood Estimation (MLE)</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Maximum Likelihood Estimation (MLE)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Likelihood:</strong> $$L(\theta; D) = \prod_{i=1}^{n} P(x_i; \theta)$$</li>
                 <li><strong>Log-Likelihood:</strong> $$l(\theta; D) = \sum_{i=1}^{n} \log P(x_i; \theta)$$</li>
                 <li><strong>MLE for Bernoulli:</strong> For $$n_h$$ heads and $$n_t$$ tails, $$\hat{p}_{MLE} = \frac{n_h}{n_h + n_t}$$</li>
                  <li><strong>MLE vs. MSE:</strong> The MLE estimator for weights in a linear model ($$y = w^Tx + \epsilon, \epsilon \sim \mathcal{N}(0, \sigma^2)$$) is unbiased, meaning on average it will be correct. However, it may not always have the lowest Mean Squared Error (MSE) compared to a biased estimator like MAP.</li>
             </ul>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Bayesian Estimation (MAP)</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Bayesian Estimation (MAP)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Bayes' Theorem for Parameters:</strong> $$P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)} \propto \text{Likelihood} \times \text{Prior}$$</li>
                 <li><strong>Bernoulli with Beta Prior:</strong> If prior is $$Beta(\alpha, \beta)$$ and data has $$n_h$$ heads, $$n_t$$ tails:
                     <ul class="list-circle list-inside ml-4 mt-2">
@@ -162,17 +168,17 @@
 
         <!-- Part 3: Supervised Learning -->
         <section id="supervised" class="content-section">
-            <h2 class="text-3xl font-bold text-gray-800">Part 3: Supervised Learning</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 3: Supervised Learning</h2>
             <h3 class="text-2xl font-semibold text-gray-700">5. Regression Models</h3>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Linear Regression</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Linear Regression</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Model:</strong> $$\hat{y} = w^T x + b$$</li>
                 <li><strong>Loss (SSE):</strong> $$L(w) = \frac{1}{2} ||X^T w - y||^2$$</li>
                 <li><strong>Gradient of SSE:</strong> $$\nabla_w L(w) = XX^T w - Xy$$</li>
                 <li><strong>Normal Equations (Solution):</strong> $$\hat{w} = (XX^T)^{-1}Xy$$</li>
             </ul>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Regularization</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Regularization</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Ridge (L2) Loss:</strong> $$L_{ridge}(w) = \text{SSE} + \frac{\lambda}{2} ||w||_2^2$$</li>
                 <li><strong>Ridge Solution:</strong> $$\hat{w}_{ridge} = (XX^T + \lambda I)^{-1}Xy$$</li>
                  <li><strong>Probabilistic View of Ridge:</strong> Ridge regression is equivalent to finding the MAP estimate of $$w$$ under the assumptions:
@@ -186,15 +192,15 @@
             </ul>
 
             <h3 class="text-2xl font-semibold text-gray-700">6. Classification Models</h3>
-             <h4 class="text-xl font-semibold mt-6 mb-2">Decision Trees</h4>
-            <ul class="list-disc list-inside space-y-3">
+             <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Decision Trees</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Entropy (Binary):</strong> $$E(p) = -p \log_2(p) - (1-p) \log_2(1-p)$$ where $$p$$ is the proportion of positive samples.</li>
                 <li><strong>Information Gain (IG):</strong> $$IG = E_{parent} - [\gamma E_{left} + (1-\gamma) E_{right}]$$ where $$\gamma = \frac{n_{left}}{n_{parent}}$$</li>
             </ul>
-             <h4 class="text-xl font-semibold mt-6 mb-2">K-Nearest Neighbors (KNN)</h4>
-            <ul class="list-disc list-inside space-y-3">
+             <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">K-Nearest Neighbors (KNN)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Prediction Algorithm:</strong>
-                    <ol class="list-decimal list-inside ml-4 mt-2">
+                    <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
                         <li>Find the distance (e.g., Euclidean) from the test point to all training points.</li>
                         <li>Sort the distances and select the 'k' nearest neighbors.</li>
                         <li>Return the most frequently occurring label among the neighbors (majority vote).</li>
@@ -202,21 +208,21 @@
                 </li>
                 <li><strong>Hyperparameters:</strong> The number of neighbors 'k' and the distance metric are chosen by the user, often tuned using cross-validation.</li>
             </ul>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Perceptron Algorithm</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Perceptron Algorithm</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Model:</strong> $$\hat{y} = \text{sign}(w^T x)$$</li>
                 <li><strong>Update Rule:</strong> If a mistake is made (i.e., $$y_i(w^T x_i) \le 0$$), then $$w \leftarrow w + y_i x_i$$.</li>
                 <li><strong>Convergence Theorem:</strong> For a linearly separable dataset with margin $$\gamma$$, where all points lie within a ball of radius $$R$$, the Perceptron algorithm is guaranteed to converge.</li>
                 <li><strong>Mistake Bound:</strong> The maximum number of mistakes (t) is bounded by: $$t \le \left(\frac{R}{\gamma}\right)^2$$. This is derived from:
-                    <ul class="list-circle list-inside ml-4 mt-2">
+                    <ul class="list-circle list-inside ml-4 mt-2 space-y-2">
                         <li><strong>Upper Bound on $$||w||^2$$:</strong> Each mistake increases the squared norm by at most $$R^2$$. After t mistakes, $$||w^{(t)}||^2 \le t R^2$$.</li>
                         <li><strong>Lower Bound on $$||w||^2$$:</strong> Each mistake increases the alignment with the optimal separator $$w^*$$ by at least $$\gamma$$. After t mistakes, $$||w^{(t)}||^2 \ge (t\gamma)^2$$.</li>
                         <li><strong>Combining Bounds:</strong> $$(t\gamma)^2 \le ||w^{(t)}||^2 \le t R^2 \implies t^2\gamma^2 \le tR^2 \implies t \le \frac{R^2}{\gamma^2}$$.</li>
                     </ul>
                 </li>
             </ul>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Support Vector Machines (SVM)</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Support Vector Machines (SVM)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Functional Margin:</strong> $$\hat{\gamma}_i = y_i(w^T x_i + b)$$</li>
                 <li><strong>Geometric Margin:</strong> $$\gamma_i = \frac{y_i(w^T x_i + b)}{||w||}$$</li>
                 <li><strong>Hard-Margin Primal:</strong> $$\min_w \frac{1}{2}||w||^2 \quad \text{s.t.} \quad y_i(w^T x_i + b) \ge 1$$</li>
@@ -225,30 +231,30 @@
                 <li><strong>Weight Vector from Dual:</strong> $$w^* = \sum_{i=1}^{n} \alpha_i^* y_i x_i$$</li>
                 <li><strong>Prediction with Kernels:</strong> $$\hat{y}_{test} = \text{sign}\left(\sum_{i \in SVs} \alpha_i^* y_i k(x_i, x_{test}) + b\right)$$</li>
             </ul>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Margin Calculation Explained (Hard Margin SVM)</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Margin Calculation Explained (Hard Margin SVM)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Distance from a point $$x_i$$ to hyperplane $$w^Tx+b=0$$:</strong> $$\text{dist}(x_i) = \frac{|w^Tx_i + b|}{||w||}$$</li>
                 <li><strong>SVM Constraint:</strong> For all points, $$y_i(w^Tx_i + b) \ge 1$$.</li>
                 <li><strong>Support Vector Condition:</strong> For the closest points (support vectors), the constraint is an equality: $$y_i(w^Tx_i + b) = 1$$. This also means $$|w^Tx_i + b| = 1$$.</li>
                 <li><strong>Distance to Support Vector:</strong> Plugging this into the distance formula gives the distance from the decision boundary to the closest point: $$\text{dist}_{SV} = \frac{1}{||w||}$$.</li>
                 <li><strong>Total Margin Width:</strong> The total gap between the two supporting hyperplanes ($$w^Tx+b=1$$ and $$w^Tx+b=-1$$) is twice this distance: $$\text{Total Margin} = \frac{2}{||w||}$$.</li>
             </ul>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Conditions for Support Vectors in Soft-Margin SVM</h4>
-            <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-indigo-50"><th class="p-2 border">Case</th><th class="p-2 border">Primal Condition</th><th class="p-2 border">Dual Condition</th><th class="p-2 border">Slack ($$\xi_i$$)</th><th class="p-2 border">Meaning</th></tr></thead><tbody><tr><td class="p-2 border">Outside Margin</td><td class="p-2 border">$$(w^T x_i)y_i > 1$$</td><td class="p-2 border">$$\alpha_i^* = 0$$</td><td class="p-2 border">$$\xi_i = 0$$</td><td class="p-2 border">Not a support vector</td></tr><tr><td class="p-2 border">On Margin</td><td class="p-2 border">$$(w^T x_i)y_i = 1$$</td><td class="p-2 border">$$\alpha_i^* \in (0, C)$$</td><td class="p-2 border">$$\xi_i = 0$$</td><td class="p-2 border">Support vector</td></tr><tr><td class="p-2 border">Within Margin</td><td class="p-2 border">$$1 > (w^T x_i)y_i > 0$$</td><td class="p-2 border">$$\alpha_i^* = C$$</td><td class="p-2 border">$$0 < \xi_i < 1$$</td><td class="p-2 border">Support vector</td></tr><tr><td class="p-2 border">Misclassified</td><td class="p-2 border">$$(w^T x_i)y_i < 0$$</td><td class="p-2 border">$$\alpha_i^* = C$$</td><td class="p-2 border">$$\xi_i > 1$$</td><td class="p-2 border">Support vector</td></tr></tbody></table></div>
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Conditions for Support Vectors in Soft-Margin SVM</h4>
+            <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-indigo-50"><th class="p-3 border">Case</th><th class="p-3 border">Primal Condition</th><th class="p-3 border">Dual Condition</th><th class="p-3 border">Slack ($$\xi_i$$)</th><th class="p-3 border">Meaning</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">Outside Margin</td><td class="p-3 border">$$(w^T x_i)y_i > 1$$</td><td class="p-3 border">$$\alpha_i^* = 0$$</td><td class="p-3 border">$$\xi_i = 0$$</td><td class="p-3 border">Not a support vector</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">On Margin</td><td class="p-3 border">$$(w^T x_i)y_i = 1$$</td><td class="p-3 border">$$\alpha_i^* \in (0, C)$$</td><td class="p-3 border">$$\xi_i = 0$$</td><td class="p-3 border">Support vector</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Within Margin</td><td class="p-3 border">$$1 > (w^T x_i)y_i > 0$$</td><td class="p-3 border">$$\alpha_i^* = C$$</td><td class="p-3 border">$$0 < \xi_i < 1$$</td><td class="p-3 border">Support vector</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Misclassified</td><td class="p-3 border">$$(w^T x_i)y_i < 0$$</td><td class="p-3 border">$$\alpha_i^* = C$$</td><td class="p-3 border">$$\xi_i > 1$$</td><td class="p-3 border">Support vector</td></tr></tbody></table></div>
         </section>
 
         <!-- Part 4: Ensemble Methods -->
         <section id="ensemble" class="content-section">
-            <h2 class="text-3xl font-bold text-gray-800">Part 4: Ensemble Methods & Neural Networks</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 4: Ensemble Methods & Neural Networks</h2>
             <h3 class="text-2xl font-semibold text-gray-700">7. Ensemble Learning</h3>
-            <h4 class="text-xl font-semibold mt-6 mb-2">Bagging (Bootstrap Aggregating)</h4>
-            <ul class="list-disc list-inside space-y-3">
+            <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Bagging (Bootstrap Aggregating)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Goal:</strong> Reduce variance.</li>
                 <li><strong>Method:</strong> Trains deep models in parallel on bootstrap samples.</li>
                 <li><strong>Probability of a point in a bag:</strong> $$1 - (1 - 1/n)^n \approx 1 - 1/e \approx 0.632$$</li>
             </ul>
-             <h4 class="text-xl font-semibold mt-6 mb-2">Boosting (AdaBoost)</h4>
-            <ul class="list-disc list-inside space-y-3">
+             <h4 class="text-xl font-semibold mt-6 mb-2 text-gray-600">Boosting (AdaBoost)</h4>
+            <ul class="list-disc list-inside space-y-4">
                 <li><strong>Goal:</strong> Reduce bias.</li>
                 <li><strong>Method:</strong> Trains weak learners sequentially.</li>
                 <li><strong>Classifier Weight:</strong> $$\alpha_t = \frac{1}{2} \ln(\frac{1 - \epsilon_t}{\epsilon_t})$$</li>
@@ -259,7 +265,7 @@
 
         <!-- Part 5: PYQ Theory -->
         <section id="pyq-theory" class="content-section">
-            <h2 class="text-3xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
              <h3 class="text-2xl font-semibold text-gray-700">8. Key Theoretical Concepts</h3>
              <ul class="list-disc list-inside space-y-4 text-lg">
                 <li><strong>Bias-Variance Tradeoff:</strong> High bias models (e.g., linear regression on non-linear data) underfit. High variance models (e.g., deep decision trees) overfit. The goal is to find a balance for the lowest test error.</li>
@@ -272,7 +278,7 @@
              <ul class="list-disc list-inside space-y-4 text-lg">
                 <li><strong>Hyperparameter Tuning:</strong> The process of finding the optimal hyperparameters (e.g., $$\lambda$$ in Ridge, 'k' in KNN) for a model on a given dataset.</li>
                 <li><strong>k-Fold Cross-Validation:</strong>
-                    <ol class="list-decimal list-inside ml-4 mt-2">
+                    <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
                         <li>Split the training data into 'k' equal folds.</li>
                         <li>For each hyperparameter value you want to test:</li>
                         <li>Iterate 'k' times. In each iteration, use one fold as the validation set and the remaining k-1 folds as the training set.</li>
@@ -287,8 +293,8 @@
 
     </div>
 
-    <footer class="text-center p-4 mt-8 bg-gray-100 border-t border-gray-200">
-        <p class="text-gray-600">BY ~KarTiK🍁</p>
+    <footer class="text-center p-6 mt-8 bg-gray-800 text-white">
+        <p class="font-medium">BY ~KarTiK🍁</p>
     </footer>
 
     <script>
