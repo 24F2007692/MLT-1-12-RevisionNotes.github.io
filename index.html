@@ -16,23 +16,22 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
-            color: #343a40; /* Softer black for body text */
-            font-size: 17px; /* Slightly larger base font size */
+            color: #343a40;
         }
 
         .katex { 
-            font-size: 1.2em !important; /* Increased font size */
-            font-weight: 700 !important; /* Made formulas bold */
+            font-size: 1.2em !important;
+            font-weight: 700 !important;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', sans-serif;
-            color: #212529; /* Darker text for headings */
+            color: #212529;
             letter-spacing: -0.5px;
         }
         
         p, li {
-            line-height: 1.8; /* Increased line height for readability */
+            line-height: 1.8;
         }
 
         h2 {
@@ -51,12 +50,11 @@
         }
         
         h4 {
-            margin-top: 2.5rem; /* Increased top margin for sub-headings */
+            margin-top: 2.5rem;
         }
 
         .content-section {
             background-color: #ffffff;
-            padding: 2rem 2.5rem;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             margin-bottom: 2.5rem;
@@ -80,7 +78,6 @@
             transform: translateX(5px);
         }
         
-        /* Animation for sections */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -90,13 +87,32 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased text-base md:text-lg">
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <header class="text-center mb-16 py-16 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg shadow-2xl text-white">
-            <h1 class="text-5xl md:text-6xl font-bold">MLT ET Revision Notes</h1>
-            <p class="text-xl text-indigo-100 mt-6 max-w-3xl mx-auto">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
+        <header class="text-center mb-12 md:mb-16 py-12 md:py-16 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg shadow-2xl text-white">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">Comprehensive Machine Learning Guide</h1>
+            <p class="text-lg md:text-xl text-indigo-100 mt-6 max-w-3xl mx-auto">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
         </header>
+
+        <!-- Mobile Nav Button -->
+        <div class="lg:hidden text-center mb-8">
+            <button id="mobile-menu-button" class="bg-violet-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-violet-700 transition-colors w-full sm:w-auto">
+                Show Navigation
+            </button>
+        </div>
+
+        <!-- Mobile Nav Panel -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white p-6 rounded-lg shadow-lg mb-8 toc">
+            <h2 class="text-2xl font-bold text-gray-800 !mt-0 !border-b-2 !border-indigo-200 pb-3 mb-4">Navigation</h2>
+            <ul class="space-y-2 text-md">
+                <li><a href="#unsupervised" class="mobile-nav-link"><strong>Part 1:</strong> Unsupervised Learning</a></li>
+                <li><a href="#estimation" class="mobile-nav-link"><strong>Part 2:</strong> Parameter Estimation</a></li>
+                <li><a href="#supervised" class="mobile-nav-link"><strong>Part 3:</strong> Supervised Learning</a></li>
+                <li><a href="#ensemble" class="mobile-nav-link"><strong>Part 4:</strong> Ensemble Methods</a></li>
+                <li><a href="#pyq-theory" class="mobile-nav-link"><strong>Part 5:</strong> Key Theory & Methods</a></li>
+            </ul>
+        </div>
 
         <div class="lg:grid lg:grid-cols-12 lg:gap-12">
             <!-- Table of Contents - Sticky Sidebar -->
@@ -116,11 +132,11 @@
             <!-- Main Content -->
             <main class="lg:col-span-9">
                 <!-- Part 1: Unsupervised Learning -->
-                <section id="unsupervised" class="content-section fade-in-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 1: Unsupervised Learning</h2>
+                <section id="unsupervised" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 1: Unsupervised Learning</h2>
                     
-                    <h3 class="text-2xl font-semibold text-gray-700">1. Principal Component Analysis (PCA)</h3>
-                    <p class="mb-6 text-lg">A technique for <strong>dimensionality reduction</strong> that finds orthogonal directions of maximum variance in the data.</p>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">1. Principal Component Analysis (PCA)</h3>
+                    <p class="mb-6">A technique for <strong>dimensionality reduction</strong> that finds orthogonal directions of maximum variance in the data.</p>
                     
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Notation Meaning</h4>
                     <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Symbol</th><th class="p-3 border">Meaning</th></tr></thead><tbody><tr><td class="p-3 border">$$d, n$$</td><td class="p-3 border">Number of features, Number of data points</td></tr><tr><td class="p-3 border">$$x_i, \overline{x}$$</td><td class="p-3 border">i-th data point, Mean vector of dataset</td></tr><tr><td class="p-3 border">$$X$$</td><td class="p-3 border">Centered data matrix ($$d \times n$$)</td></tr><tr><td class="p-3 border">$$C$$</td><td class="p-3 border">Covariance matrix ($$d \times d$$)</td></tr><tr><td class="p-3 border">$$K$$</td><td class="p-3 border">Gram matrix ($$n \times n$$)</td></tr><tr><td class="p-3 border">$$w_j, \lambda_j$$</td><td class="p-3 border">j-th Principal Component (eigenvector of C), j-th eigenvalue</td></tr></tbody></table></div>
@@ -140,8 +156,8 @@
                         <li><strong>Proportion of Variance Captured:</strong><div class="text-center mt-2">$$\frac{\sum_{j=1}^{k}\lambda_j}{\sum_{j=1}^{d}\lambda_j}$$</div></li>
                     </ul>
 
-                    <h3 class="text-2xl font-semibold text-gray-700">2. K-Means Clustering</h3>
-                    <p class="mb-6 text-lg">An iterative algorithm that partitions a dataset into K pre-defined, non-overlapping clusters.</p>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">2. K-Means Clustering</h3>
+                    <p class="mb-6">An iterative algorithm that partitions a dataset into K pre-defined, non-overlapping clusters.</p>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Concepts & Formulas</h4>
                      <ul class="space-y-8">
                         <li><strong>Objective Function (WCSS):</strong><div class="text-center mt-2">$$J = \sum_{k=1}^{K} \sum_{x_i \in C_k} ||x_i - \mu_k||^2$$</div></li>
@@ -155,8 +171,8 @@
                         </li>
                     </ul>
 
-                    <h3 class="text-2xl font-semibold text-gray-700">3. Gaussian Mixture Models (GMM) & EM Algorithm</h3>
-                    <p class="mb-6 text-lg">A probabilistic model that assumes data is generated from a mixture of several Gaussian distributions. It performs "soft" clustering.</p>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">3. Gaussian Mixture Models (GMM) & EM Algorithm</h3>
+                    <p class="mb-6">A probabilistic model that assumes data is generated from a mixture of several Gaussian distributions. It performs "soft" clustering.</p>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Core Concepts & Formulas</h4>
                     <ul class="space-y-8">
                         <li><strong>GMM Probability Density Function (PDF):</strong><div class="text-center mt-2">$$f(x;\theta)=\sum_{k=1}^{K}\pi_{k}\mathcal{N}(x;\mu_{k},\Sigma_{k})$$</div></li>
@@ -177,9 +193,9 @@
                 </section>
 
                 <!-- Part 2: Parameter Estimation -->
-                <section id="estimation" class="content-section fade-in-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 2: Parameter Estimation</h2>
-                    <h3 class="text-2xl font-semibold text-gray-700">4. MLE and Bayesian (MAP) Estimation</h3>
+                <section id="estimation" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 2: Parameter Estimation</h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">4. MLE and Bayesian (MAP) Estimation</h3>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Maximum Likelihood Estimation (MLE)</h4>
                     <ul class="space-y-8">
                         <li><strong>Likelihood:</strong><div class="text-center mt-2">$$L(\theta; D) = \prod_{i=1}^{n} P(x_i; \theta)$$</div></li>
@@ -202,9 +218,9 @@
                 </section>
 
                 <!-- Part 3: Supervised Learning -->
-                <section id="supervised" class="content-section fade-in-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 3: Supervised Learning</h2>
-                    <h3 class="text-2xl font-semibold text-gray-700">5. Regression Models</h3>
+                <section id="supervised" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 3: Supervised Learning</h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">5. Regression Models</h3>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Linear Regression</h4>
                     <ul class="space-y-8">
                         <li><strong>Model:</strong><div class="text-center mt-2">$$\hat{y} = w^T x + b$$</div></li>
@@ -226,9 +242,9 @@
                         <li><strong>LASSO (L1) Loss:</strong><div class="text-center mt-2">$$L_{LASSO}(w) = \text{SSE} + \lambda ||w||_1$$</div></li>
                     </ul>
 
-                    <h3 class="text-2xl font-semibold text-gray-700">6. Classification Models</h3>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">6. Classification Models</h3>
                      <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Comparing Loss Functions (Convex Surrogates)</h4>
-                     <p class="mb-6 text-lg">For a margin score $$u = y(w^T x)$$, where $$y \in \{-1, 1\}$$, different algorithms use convex approximations (surrogates) for the ideal 0-1 loss.</p>
+                     <p class="mb-6">For a margin score $$u = y(w^T x)$$, where $$y \in \{-1, 1\}$$, different algorithms use convex approximations (surrogates) for the ideal 0-1 loss.</p>
                      <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Loss</th><th class="p-3 border">Formula L(u)</th><th class="p-3 border">Classifier</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">0-1 Loss</td><td class="p-3 border">$$\mathbb{I}[u < 0]$$</td><td class="p-3 border">Ideal (Theoretical)</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Squared Loss</td><td class="p-3 border">$$(u-1)^2$$</td><td class="p-3 border">Least Squares</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Hinge Loss</td><td class="p-3 border">$$\max(0, 1-u)$$</td><td class="p-3 border">SVM</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Logistic Loss</td><td class="p-3 border">$$\log(1+e^{-u})$$</td><td class="p-3 border">Logistic Regression</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Perceptron Loss</td><td class="p-3 border">$$\max(0, -u)$$</td><td class="p-3 border">Perceptron</td></tr></tbody></table></div>
                      
                      <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Decision Trees</h4>
@@ -277,9 +293,9 @@
                 </section>
 
                 <!-- Part 4: Ensemble Methods -->
-                <section id="ensemble" class="content-section fade-in-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 4: Ensemble Methods & Neural Networks</h2>
-                    <h3 class="text-2xl font-semibold text-gray-700">7. Ensemble Learning</h3>
+                <section id="ensemble" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 4: Ensemble Methods & Neural Networks</h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">7. Ensemble Learning</h3>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bagging (Bootstrap Aggregating)</h4>
                     <ul class="space-y-8">
                         <li><strong>Goal:</strong> Reduce variance.</li>
@@ -297,18 +313,18 @@
                 </section>
 
                 <!-- Part 5: PYQ Theory -->
-                <section id="pyq-theory" class="content-section fade-in-section">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
-                     <h3 class="text-2xl font-semibold text-gray-700">8. Key Theoretical Concepts</h3>
-                     <ul class="list-disc list-inside space-y-4 text-lg">
+                <section id="pyq-theory" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Important Theoretical Points & Methods from PYQs</h2>
+                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">8. Key Theoretical Concepts</h3>
+                     <ul class="list-disc list-inside space-y-4">
                         <li><strong>Bias-Variance Tradeoff:</strong> High bias models (e.g., linear regression on non-linear data) underfit. High variance models (e.g., deep decision trees) overfit. The goal is to find a balance for the lowest test error.</li>
                         <li><strong>Model Complexity vs. Error:</strong> As complexity increases, training error decreases, while test error forms a U-shape.</li>
                         <li><strong>Regularization:</strong> Its main purpose is to penalize large coefficients to reduce overfitting and model variance. In practice, $$\lambda$$ is a tuning knob found via cross-validation.</li>
                         <li><strong>Ensemble Methods:</strong> Bagging reduces variance using complex models in parallel. Boosting reduces bias using weak models sequentially.</li>
                         <li><strong>SVMs:</strong> A point is a support vector only if its dual variable $$\alpha_i^* > 0$$. For linearly separable data, soft-margin and hard-margin SVMs produce the same result.</li>
                      </ul>
-                     <h3 class="text-2xl font-semibold text-gray-700">9. Hyperparameter Tuning & Cross-Validation</h3>
-                     <ul class="list-disc list-inside space-y-4 text-lg">
+                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">9. Hyperparameter Tuning & Cross-Validation</h3>
+                     <ul class="list-disc list-inside space-y-4">
                         <li><strong>Hyperparameter Tuning:</strong> The process of finding the optimal hyperparameters (e.g., $$\lambda$$ in Ridge, 'k' in KNN) for a model on a given dataset.</li>
                         <li><strong>k-Fold Cross-Validation:</strong>
                             <ol class="list-decimal list-inside ml-4 mt-2 space-y-2">
@@ -322,8 +338,8 @@
                         </li>
                         <li><strong>Leave-One-Out Cross-Validation (LOOCV):</strong> A special case of k-fold where k equals the number of data points (n). In each iteration, one point is used for validation and the rest for training. It's computationally expensive but provides an almost unbiased estimate of the test error.</li>
                      </ul>
-                     <h3 class="text-2xl font-semibold text-gray-700">10. Interactive Loss Function Graph</h3>
-                     <p class="mb-6 text-lg">This graph visualizes the different convex surrogate loss functions used in classification, plotted against the margin score $$u = y(w^T x)$$. Hover over the lines to compare their penalties.</p>
+                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">10. Interactive Loss Function Graph</h3>
+                     <p class="mb-6">This graph visualizes the different convex surrogate loss functions used in classification, plotted against the margin score $$u = y(w^T x)$$. Hover over the lines to compare their penalties.</p>
                      <div class="mt-8">
                         <canvas id="lossChart"></canvas>
                      </div>
@@ -362,6 +378,7 @@
             // Active link highlighting for TOC
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.toc a');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
             const onScroll = () => {
                 let current = '';
@@ -486,6 +503,22 @@
                     }
                 });
             }
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.textContent = mobileMenu.classList.contains('hidden') ? 'Show Navigation' : 'Hide Navigation';
+            });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.textContent = 'Show Navigation';
+                });
+            });
         });
     </script>
 </body>
