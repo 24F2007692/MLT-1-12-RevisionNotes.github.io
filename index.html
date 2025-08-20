@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMVIROPtCIDJcpcDTAOT9sWlLplmg7JYTT7GoqxSrg3odEIFG" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -324,8 +325,11 @@
                         </li>
                         <li><strong>Leave-One-Out Cross-Validation (LOOCV):</strong> A special case of k-fold where k equals the number of data points (n). In each iteration, one point is used for validation and the rest for training. It's computationally expensive but provides an almost unbiased estimate of the test error.</li>
                      </ul>
-                     <h3 class="text-2xl font-semibold text-gray-700">10. Loss Function Breakdown</h3>
-                     <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Loss</th><th class="p-3 border">Formula L(u)</th><th class="p-3 border">Classifier</th><th class="p-3 border">Intuition</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">0-1 Loss</td><td class="p-3 border">$$\mathbb{I}[u < 0]$$</td><td class="p-3 border">Ideal (Theoretical)</td><td class="p-3 border">Penalizes only misclassifications. Non-convex and hard to optimize.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Squared Loss</td><td class="p-3 border">$$(u-1)^2$$</td><td class="p-3 border">Least Squares Classifier</td><td class="p-3 border">Regression-type penalty; large errors are penalized quadratically.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Hinge Loss</td><td class="p-3 border">$$\max(0, 1-u)$$</td><td class="p-3 border">SVM</td><td class="p-3 border">Pushes for a margin of at least 1; penalizes correct but small-margin predictions.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Logistic Loss</td><td class="p-3 border">$$\log(1+e^{-u})$$</td><td class="p-3 border">Logistic Regression</td><td class="p-3 border">Probability-based penalty; always gives a positive loss but reduces smoothly.</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Perceptron Loss (Modified Hinge)</td><td class="p-3 border">$$\max(0, -u)$$</td><td class="p-3 border">Perceptron</td><td class="p-3 border">Only penalizes wrong predictions; zero loss for correct predictions.</td></tr></tbody></table></div>
+                     <h3 class="text-2xl font-semibold text-gray-700">10. Interactive Loss Function Graph</h3>
+                     <p class="mb-4 text-lg">This graph visualizes the different convex surrogate loss functions used in classification, plotted against the margin score $$u = y(w^T x)$$. Hover over the lines to compare their penalties.</p>
+                     <div class="mt-8">
+                        <canvas id="lossChart"></canvas>
+                     </div>
                 </section>
             </main>
         </div>
@@ -381,6 +385,110 @@
 
             window.addEventListener('scroll', onScroll);
 
+            // Chart.js for Loss Function Graph
+            const ctx = document.getElementById('lossChart');
+            if(ctx) {
+                const labels = [];
+                const squaredData = [];
+                const hingeData = [];
+                const logisticData = [];
+                const perceptronData = [];
+                const zeroOneData = [];
+
+                for (let u = -3; u <= 4; u += 0.1) {
+                    labels.push(u.toFixed(1));
+                    // 0-1 Loss
+                    zeroOneData.push(u < 0 ? 1 : 0);
+                    // Squared Loss
+                    squaredData.push(Math.pow(u - 1, 2));
+                    // Hinge Loss
+                    hingeData.push(Math.max(0, 1 - u));
+                    // Logistic Loss
+                    logisticData.push(Math.log(1 + Math.exp(-u)));
+                    // Perceptron Loss
+                    perceptronData.push(Math.max(0, -u));
+                }
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: '0-1 Loss',
+                                data: zeroOneData,
+                                borderColor: 'rgba(0, 0, 0, 0.8)',
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1,
+                                pointRadius: 0,
+                                borderDash: [5, 5]
+                            },
+                            {
+                                label: 'Squared Loss',
+                                data: squaredData,
+                                borderColor: 'rgba(239, 68, 68, 1)', // Red
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'Hinge Loss (SVM)',
+                                data: hingeData,
+                                borderColor: 'rgba(34, 197, 94, 1)', // Green
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'Logistic Loss',
+                                data: logisticData,
+                                borderColor: 'rgba(59, 130, 246, 1)', // Blue
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'Perceptron Loss',
+                                data: perceptronData,
+                                borderColor: 'rgba(249, 115, 22, 1)', // Orange
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1,
+                                pointRadius: 0
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Margin Score (u)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Loss L(u)'
+                                },
+                                beginAtZero: true,
+                                max: 4.5
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
