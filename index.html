@@ -110,8 +110,9 @@
                 <li><a href="#estimation" class="mobile-nav-link"><strong>Part 2:</strong> Parameter Estimation</a></li>
                 <li><a href="#supervised" class="mobile-nav-link"><strong>Part 3:</strong> Supervised Learning</a></li>
                 <li><a href="#ensemble" class="mobile-nav-link"><strong>Part 4:</strong> Ensemble Methods</a></li>
-                <li><a href="#neural-networks" class="mobile-nav-link"><strong>Part 5:</strong> Neural Networks</a></li>
-                <li><a href="#visualization" class="mobile-nav-link"><strong>Part 6:</strong> Loss Function Graph</a></li>
+                <li><a href="#concepts" class="mobile-nav-link"><strong>Part 5:</strong> Key Concepts</a></li>
+                <li><a href="#neural-networks" class="mobile-nav-link"><strong>Part 6:</strong> Neural Networks</a></li>
+                <li><a href="#visualization" class="mobile-nav-link"><strong>Part 7:</strong> Loss Function Graph</a></li>
             </ul>
         </div>
 
@@ -125,8 +126,9 @@
                         <li><a href="#estimation"><strong>Part 2:</strong> Parameter Estimation</a></li>
                         <li><a href="#supervised"><strong>Part 3:</strong> Supervised Learning</a></li>
                         <li><a href="#ensemble"><strong>Part 4:</strong> Ensemble Methods</a></li>
-                        <li><a href="#neural-networks"><strong>Part 5:</strong> Neural Networks</a></li>
-                        <li><a href="#visualization"><strong>Part 6:</strong> Loss Function Graph</a></li>
+                        <li><a href="#concepts"><strong>Part 5:</strong> Key Concepts</a></li>
+                        <li><a href="#neural-networks"><strong>Part 6:</strong> Neural Networks</a></li>
+                        <li><a href="#visualization"><strong>Part 7:</strong> Loss Function Graph</a></li>
                     </ul>
                 </div>
             </aside>
@@ -226,6 +228,7 @@
                     <ul class="space-y-8">
                         <li><strong>Entropy (Binary):</strong><div class="text-center mt-2">$$E(p) = -p \log_2(p) - (1-p) \log_2(1-p)$$</div></li>
                         <li><strong>Information Gain (IG):</strong><div class="text-center mt-2">$$IG = E_{parent} - [\gamma E_{left} + (1-\gamma) E_{right}]$$</div></li>
+                        <li><strong>Pure Node:</strong> A node is pure if all its samples belong to the same class, meaning its entropy is 0.</li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Perceptron Algorithm</h4>
                     <ul class="space-y-8">
@@ -243,6 +246,22 @@
                         <li><strong>Prediction with Kernels:</strong><div class="text-center mt-2">$$\hat{y}_{test} = \text{sign}\left(\sum_{i \in SVs} \alpha_i^* y_i k(x_i, x_{test}) + b\right)$$</div></li>
                         <li><strong>Total Margin Width:</strong><div class="text-center mt-2">$$\text{Total Margin} = \frac{2}{||w||}$$</div></li>
                     </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Key KKT Conditions for SVM</h4>
+                    <ul class="space-y-8">
+                        <li><strong>Stationarity Condition:</strong><div class="text-center mt-2">$$\alpha_i + \beta_i = C, \quad \alpha_i, \beta_i \ge 0$$</div></li>
+                        <li><strong>Complementary Slackness:</strong><div class="text-center mt-2">$$\alpha_i(1 - \xi_i - m_i) = 0, \quad \beta_i \xi_i = 0$$</div></li>
+                        <li><strong>Implications:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li>$$\alpha_i = 0 \implies m_i > 1, \xi_i = 0$$ (outside margin, correct).</li>
+                                <li>$$0 < \alpha_i < C \implies m_i = 1, \xi_i = 0$$ (on margin).</li>
+                                <li>$$\alpha_i = C \implies \beta_i = 0, \xi_i > 0$$ (inside margin or misclassified).</li>
+                                <li>$$\xi_i > 1 \implies$$ misclassified.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Soft-Margin SVM Case Table</h4>
+                    <p class="mb-4 text-sm">Where the margin value is defined as: $$m_i = y_i(\mathbf{w}^\top \mathbf{x}_i+b)$$</p>
+                    <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Case (Position)</th><th class="p-3 border">Margin Value $$m_i$$</th><th class="p-3 border">Slack $$\xi_i$$</th><th class="p-3 border">Dual $$\alpha_i$$</th><th class="p-3 border">Support Vector?</th><th class="p-3 border">Classification</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">Outside margin</td><td class="p-3 border">$$m_i > 1$$</td><td class="p-3 border">0</td><td class="p-3 border">0</td><td class="p-3 border">No</td><td class="p-3 border">Correctly classified</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">On margin</td><td class="p-3 border">$$m_i = 1$$</td><td class="p-3 border">0</td><td class="p-3 border">$$0 < \alpha_i < C$$</td><td class="p-3 border">Yes</td><td class="p-3 border">Correctly classified</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Inside margin</td><td class="p-3 border">$$0 < m_i < 1$$</td><td class="p-3 border">$$1 - m_i$$</td><td class="p-3 border">C</td><td class="p-3 border">Yes</td><td class="p-3 border">Correctly classified</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">On decision boundary</td><td class="p-3 border">$$m_i = 0$$</td><td class="p-3 border">1</td><td class="p-3 border">C</td><td class="p-3 border">Yes</td><td class="p-3 border">Edge case</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Misclassified point</td><td class="p-3 border">$$m_i < 0$$</td><td class="p-3 border">$$> 1$$</td><td class="p-3 border">C</td><td class="p-3 border">Yes</td><td class="p-3 border">Incorrectly classified</td></tr></tbody></table></div>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Effect of C in Soft Margin SVM</h4>
                     <p class="mb-4">The parameter C controls the trade-off between having a wide margin and correctly classifying training points. It's a way to manage the bias-variance tradeoff.</p>
                     <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Parameter</th><th class="p-3 border">Small C (Low Penalty)</th><th class="p-3 border">Large C (High Penalty)</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">Penalty on misclassification</td><td class="p-3 border">Low → mistakes allowed</td><td class="p-3 border">High → mistakes not allowed</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Margin size</td><td class="p-3 border">Wide margin</td><td class="p-3 border">Narrow margin</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Bias-Variance tradeoff</td><td class="p-3 border">High bias, low variance (underfit)</td><td class="p-3 border">Low bias, high variance (overfit)</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Tolerance to outliers</td><td class="p-3 border">Ignores some outliers (robust)</td><td class="p-3 border">Sensitive to outliers (tries to fit them)</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Generalization</td><td class="p-3 border">Better generalization</td><td class="p-3 border">Risk of poor generalization</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Decision boundary</td><td class="p-3 border">Simpler, smoother</td><td class="p-3 border">Complex, may twist to fit data</td></tr></tbody></table></div>
@@ -266,9 +285,30 @@
                     </ul>
                 </section>
 
-                <!-- Part 5: Neural Networks -->
+                <!-- Part 5: Key Concepts -->
+                <section id="concepts" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Key Concepts</h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">Bias-Variance Tradeoff</h3>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Training Error vs. Test Error</h4>
+                    <ul class="list-disc list-inside space-y-4">
+                        <li><strong>High Bias Model (Underfitting):</strong>
+                            <ul class="list-circle list-inside ml-4 mt-2">
+                                <li><strong>Training Error:</strong> High (Model can't even capture the pattern in the training data).</li>
+                                <li><strong>Test Error:</strong> High (Model fails to generalize).</li>
+                            </ul>
+                        </li>
+                        <li><strong>High Variance Model (Overfitting):</strong>
+                            <ul class="list-circle list-inside ml-4 mt-2">
+                                <li><strong>Training Error:</strong> Low (Model has memorized the training data, including noise).</li>
+                                <li><strong>Test Error:</strong> High (Model does not generalize to new, unseen data).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Part 6: Neural Networks -->
                 <section id="neural-networks" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 5: Neural Networks</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 6: Neural Networks</h2>
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">8. Core Formulas & Architecture</h3>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Computation at a Neuron</h4>
                     <ul class="space-y-8">
@@ -311,9 +351,9 @@
                     </ul>
                 </section>
 
-                <!-- Part 6: Visualization -->
+                <!-- Part 7: Visualization -->
                 <section id="visualization" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 6: Loss Function Visualization</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 7: Loss Function Visualization</h2>
                      <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">Interactive Loss Function Graph</h3>
                      <p class="mb-6">This graph visualizes the different convex surrogate loss functions used in classification, plotted against the margin score $$u = y(w^T x)$$. Hover over the lines to compare their penalties.</p>
                      <div class="mt-8">
