@@ -52,6 +52,12 @@
         h4 {
             margin-top: 2.5rem;
         }
+        
+        h5 {
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: #4c1d95;
+        }
 
         .content-section {
             background-color: #ffffff;
@@ -92,7 +98,7 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <header class="text-center mb-12 md:mb-16 py-12 md:py-16 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg shadow-2xl text-white">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">MLT ET Revision</h1>
-            <p class="text-lg md:text-xl text-indigo-100 mt-6 max-w-3xl mx-auto">An exhaustive reference of formulas, theories, and insights.</p>
+            <p class="text-lg md:text-xl text-indigo-100 mt-6 max-w-3xl mx-auto">An exhaustive reference of formulas, theories, and insights from all provided materials.</p>
         </header>
 
         <!-- Mobile Nav Button -->
@@ -234,6 +240,10 @@
                     <ul class="space-y-8">
                         <li><strong>Model:</strong><div class="text-center mt-2">$$\hat{y} = \text{sign}(w^T x)$$</div></li>
                         <li><strong>Update Rule:</strong><div class="text-center mt-2">If $$y_i(w^T x_i) \le 0$$, then $$w \leftarrow w + y_i x_i$$</div></li>
+                        <li><strong>Radius (R):</strong><div class="text-center mt-2">$$R = \max_i ||x_i||$$</div></li>
+                        <li class="text-sm">The maximum Euclidean norm of any data point. Think of it as the "size of the largest input vector."</li>
+                        <li><strong>Margin (γ):</strong><div class="text-center mt-2">$$\gamma = \min_i \frac{y_i(w^T x_i)}{||w||}$$</div></li>
+                        <li class="text-sm">The minimum distance of any point from the separating hyperplane. Intuitively, it's how well-separated the two classes are. Larger γ → fewer mistakes.</li>
                         <li><strong>Mistake Bound:</strong><div class="text-center mt-2">$$t \le \left(\frac{R}{\gamma}\right)^2$$</div></li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Support Vector Machines (SVM)</h4>
@@ -283,6 +293,24 @@
                         <li><strong>Data Weight Update:</strong><div class="text-center mt-2">$$D_{t+1}(i) \propto D_t(i) \exp(-\alpha_t y_i h_t(x_i))$$</div></li>
                         <li><strong>Final Classifier:</strong><div class="text-center mt-2">$$H(x) = \text{sign}\left(\sum_{t=1}^{T} \alpha_t h_t(x)\right)$$</div></li>
                     </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost Worked Example</h4>
+                    <p>Consider a dataset of 4 samples: $$(A,+1), (B,+1), (C,-1), (D,-1)$$. Initially, all weights are equal: $$D_1(i)=0.25$$</p>
+                    <h5 class="text-lg">Round 1</h5>
+                    <ul class="space-y-4 text-sm">
+                        <li><strong>Weak learner $h_1(x)$ predicts:</strong> $$[+1, -1, -1, -1]$$. Sample #2 is misclassified.</li>
+                        <li><strong>Error $\varepsilon_1$:</strong> $$0.25$$ (weight of misclassified sample).</li>
+                        <li><strong>Classifier weight $\alpha_1$:</strong> $$\tfrac{1}{2}\ln(\frac{1-0.25}{0.25}) = \tfrac{1}{2}\ln(3) \approx 0.549$$</li>
+                        <li><strong>Update weights:</strong> Multiply correct examples by $$e^{-\alpha_1} \approx 0.577$$ and wrong examples by $$e^{\alpha_1} \approx 1.732$$.</li>
+                        <li><strong>New Distribution $D_2$:</strong> After normalization, weights are approx. $$[0.167, 0.5, 0.167, 0.167]$$. Sample #2 now has the highest weight.</li>
+                    </ul>
+                    <h5 class="text-lg">Round 2</h5>
+                    <ul class="space-y-4 text-sm">
+                        <li><strong>Weak learner $h_2(x)$ predicts:</strong> $$[+1, +1, +1, -1]$$. Sample #3 is misclassified.</li>
+                        <li><strong>Error $\varepsilon_2$:</strong> $$D_2(3) = 0.167$$.</li>
+                        <li><strong>Classifier weight $\alpha_2$:</strong> $$\tfrac{1}{2}\ln(\frac{1-0.167}{0.167}) = \tfrac{1}{2}\ln(5) \approx 0.804$$</li>
+                    </ul>
+                    <h5 class="text-lg">Final Strong Classifier (after 2 rounds)</h5>
+                    <div class="text-center mt-2">$$H(x)=\text{sign}(0.549 \cdot h_1(x)+0.804 \cdot h_2(x))$$</div>
                 </section>
 
                 <!-- Part 5: Key Concepts -->
