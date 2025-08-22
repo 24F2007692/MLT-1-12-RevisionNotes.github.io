@@ -205,6 +205,11 @@
                         <li><strong>Posterior for Bernoulli (Beta Prior):</strong><div class="text-center mt-2">$$P(p|D) = \text{Beta}(\alpha + n_h, \beta + n_t)$$</div></li>
                         <li><strong>Posterior Mean:</strong><div class="text-center mt-2">$$E[p|D] = \frac{\alpha + n_h}{\alpha + \beta + n_h + n_t}$$</div></li>
                         <li><strong>MAP for Bernoulli (Beta Prior):</strong><div class="text-center mt-2">$$\hat{p}_{MAP} = \frac{\alpha + n_h - 1}{\alpha + \beta + n_h + n_t - 2}$$</div></li>
+                        <li><strong>Key Point:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li>✅ <strong>MAP estimate equals MLE if the prior is uniform.</strong></li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
 
@@ -229,12 +234,26 @@
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">6. Classification Models</h3>
                      <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Loss Functions Table</h4>
                      <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-50"><th class="p-3 border">Loss</th><th class="p-3 border">Formula L(u)</th><th class="p-3 border">Classifier</th></tr></thead><tbody><tr class="odd:bg-gray-50"><td class="p-3 border">0-1 Loss</td><td class="p-3 border">$$\mathbb{I}[u < 0]$$</td><td class="p-3 border">Ideal (Theoretical)</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Squared Loss</td><td class="p-3 border">$$(u-1)^2$$</td><td class="p-3 border">Least Squares</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Hinge Loss</td><td class="p-3 border">$$\max(0, 1-u)$$</td><td class="p-3 border">SVM</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Logistic Loss</td><td class="p-3 border">$$\log(1+e^{-u})$$</td><td class="p-3 border">Logistic Regression</td></tr><tr class="odd:bg-gray-50"><td class="p-3 border">Perceptron Loss</td><td class="p-3 border">$$\max(0, -u)$$</td><td class="p-3 border">Perceptron</td></tr></tbody></table></div>
+                     <ul class="space-y-4 mt-4">
+                        <li><strong>Key Intersection Point:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li>The logistic loss and the (SVM) hinge loss intersect when $$(w^T x)y = \ln(e-1)$$.</li>
+                            </ul>
+                        </li>
+                     </ul>
                      
                      <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Decision Trees</h4>
                     <ul class="space-y-8">
                         <li><strong>Entropy (Binary):</strong><div class="text-center mt-2">$$E(p) = -p \log_2(p) - (1-p) \log_2(1-p)$$</div></li>
                         <li><strong>Information Gain (IG):</strong><div class="text-center mt-2">$$IG = E_{parent} - [\gamma E_{left} + (1-\gamma) E_{right}]$$</div></li>
-                        <li><strong>Pure Node:</strong> A node is pure if all its samples belong to the same class, meaning its entropy is 0.</li>
+                        <li><strong>Key Points:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li><strong>Entropy = 0:</strong> Pure node (all samples belong to the same class).</li>
+                                <li><strong>Entropy = 1 (max for binary):</strong> Maximally impure node.</li>
+                                <li>Information Gain is always $$\ge 0$$.</li>
+                                <li>A perfect split results in pure children nodes and maximizes Information Gain.</li>
+                            </ul>
+                        </li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Perceptron Algorithm</h4>
                     <ul class="space-y-8">
@@ -245,6 +264,11 @@
                         <li><strong>Margin (γ):</strong><div class="text-center mt-2">$$\gamma = \min_i \frac{y_i(w^T x_i)}{||w||}$$</div></li>
                         <li class="text-sm">The minimum distance of any point from the separating hyperplane. Intuitively, it's how well-separated the two classes are. Larger γ → fewer mistakes.</li>
                         <li><strong>Mistake Bound:</strong><div class="text-center mt-2">$$t \le \left(\frac{R}{\gamma}\right)^2$$</div></li>
+                        <li><strong>Key Point:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li>The weight vector output by the perceptron algorithm can be expressed as a linear combination of the data-points where the coefficients of the linear combination are integers.</li>
+                            </ul>
+                        </li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Support Vector Machines (SVM)</h4>
                     <ul class="space-y-8">
@@ -286,11 +310,22 @@
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bagging</h4>
                     <ul class="space-y-8">
                         <li><strong>Probability of a point in a bag:</strong><div class="text-center mt-2">$$1 - (1 - 1/n)^n \approx 1 - 1/e \approx 0.632$$</div></li>
+                        <li><strong>Key Point:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li>All the estimators in bagging can be trained parallelly.</li>
+                            </ul>
+                        </li>
                     </ul>
                      <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost</h4>
                     <ul class="space-y-8">
                         <li><strong>Classifier Weight:</strong><div class="text-center mt-2">$$\alpha_t = \frac{1}{2} \ln(\frac{1 - \epsilon_t}{\epsilon_t})$$</div></li>
                         <li><strong>Data Weight Update:</strong><div class="text-center mt-2">$$D_{t+1}(i) \propto D_t(i) \exp(-\alpha_t y_i h_t(x_i))$$</div></li>
+                        <li><strong>Key Idea:</strong>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
+                                <li>The weight of a datapoint is decreased in the next round if it is classified correctly.</li>
+                                <li>The weight of a datapoint is increased in the next round if it is classified incorrectly.</li>
+                            </ul>
+                        </li>
                         <li><strong>Final Classifier:</strong><div class="text-center mt-2">$$H(x) = \text{sign}\left(\sum_{t=1}^{T} \alpha_t h_t(x)\right)$$</div></li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost Worked Example</h4>
@@ -332,6 +367,17 @@
                             </ul>
                         </li>
                     </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Model Complexity</h4>
+                    <ul class="list-disc list-inside space-y-4">
+                        <li>The relationship between model complexity and error is U-shaped (this is the bias-variance tradeoff).</li>
+                        <li><strong>Low complexity:</strong> Underfitting → high training error, high test error.</li>
+                        <li><strong>Moderate complexity:</strong> Best generalization → low test error.</li>
+                        <li><strong>Very high complexity:</strong> Overfitting → low training error, but high test error.</li>
+                        <li>✅ <strong>Increasing complexity always decreases training error (or keeps it the same).</strong> A more complex model can always mimic a simpler one.</li>
+                        <li>❌ <strong>Increasing complexity does NOT always decrease test error.</strong> It only does so up to the optimal point, after which test error increases due to overfitting.</li>
+                        <li>✅ <strong>With infinite training data, more complexity will not harm test error.</strong> In theory, enough data prevents overfitting.</li>
+                        <li>✅ <strong>With fixed small data, simpler models may outperform complex ones</strong> because they avoid overfitting.</li>
+                    </ul>
                 </section>
 
                 <!-- Part 6: Neural Networks -->
@@ -347,6 +393,38 @@
                     <ul class="space-y-8">
                         <li><strong>Parameters in layer l:</strong><div class="text-center mt-2">$$ (n_{in} \times n_{out}) + n_{out} $$</div></li>
                         <li class="text-sm">Where $$n_{in}$$ is the number of inputs to the layer (e.g., from previous layer's neurons) and $$n_{out}$$ is the number of neurons in the current layer. The first term represents weights and the second term represents biases.</li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Step-by-step Parameter Calculation Example</h4>
+                    <p><strong>Architecture:</strong> Input: 5 → Hidden-1: 10 → Hidden-2: 10 → Output: 1</p>
+                    <ul class="space-y-4 text-sm">
+                        <li><strong>Layer 1 (Input to Hidden-1):</strong>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Weights: $$5 \times 10 = 50$$</li>
+                                <li>Biases: $$10$$</li>
+                                <li>Total: $$50 + 10 = 60$$</li>
+                            </ul>
+                        </li>
+                        <li><strong>Layer 2 (Hidden-1 to Hidden-2):</strong>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Weights: $$10 \times 10 = 100$$</li>
+                                <li>Biases: $$10$$</li>
+                                <li>Total: $$100 + 10 = 110$$</li>
+                            </ul>
+                        </li>
+                        <li><strong>Layer 3 (Hidden-2 to Output):</strong>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Weights: $$10 \times 1 = 10$$</li>
+                                <li>Biases: $$1$$</li>
+                                <li>Total: $$10 + 1 = 11$$</li>
+                            </ul>
+                        </li>
+                        <li><strong>Final Totals:</strong>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Total Weights: $$50 + 100 + 10 = 160$$</li>
+                                <li>Total Biases: $$10 + 10 + 1 = 21$$</li>
+                                <li><strong>Total Parameters: $$160 + 21 = 181$$</strong></li>
+                            </ul>
+                        </li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Common Activation Functions (Hidden Layers)</h4>
                     <ul class="space-y-8">
@@ -370,6 +448,7 @@
                             <ul class="list-circle list-inside ml-4 mt-2 space-y-2">
                                 <li><strong>Output Layer Activation:</strong> Sigmoid.</li>
                                 <li><strong>Loss Function:</strong> Binary Cross-Entropy.<div class="text-center mt-2">$$L = -[y \log(\hat{y}) + (1-y)\log(1-\hat{y})]$$</div></li>
+                                <li><strong>Best Practice:</strong> Use the sigmoid (logistic) activation on the single output unit, because it maps the output to [0,1] and gives a probability for the positive class.</li>
                             </ul>
                         </li>
                     </ul>
