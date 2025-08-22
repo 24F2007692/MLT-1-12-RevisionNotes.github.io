@@ -307,25 +307,32 @@
                 <section id="ensemble" class="content-section fade-in-section p-6 md:p-8 lg:p-10">
                     <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Part 4: Ensemble Methods</h2>
                     <h3 class="text-2xl sm:text-3xl font-semibold text-gray-700">7. Ensemble Learning</h3>
-                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bagging</h4>
-                    <ul class="space-y-8">
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Bagging (Bootstrap Aggregating) – Key Points</h4>
+                    <ul class="list-disc list-inside space-y-2 text-sm">
+                        <li><strong>Objective:</strong> Reduce variance (reduce overfitting).</li>
+                        <li><strong>Base learner:</strong> Usually deep decision trees (high variance models).</li>
+                        <li><strong>Execution:</strong> Parallel (each tree is independent).</li>
+                        <li><strong>Sampling:</strong> Bootstrap sampling (sampling with replacement).</li>
+                        <li><strong>Combination:</strong> Average (for regression) / Majority voting (for classification).</li>
+                        <li><strong>Famous Example:</strong> Random Forest.</li>
+                        <li><strong>Bias/Variance:</strong> Bias stays the same, variance is reduced.</li>
                         <li><strong>Probability of a point in a bag:</strong><div class="text-center mt-2">$$1 - (1 - 1/n)^n \approx 1 - 1/e \approx 0.632$$</div></li>
-                        <li><strong>Key Point:</strong>
-                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
-                                <li>All the estimators in bagging can be trained parallelly.</li>
-                            </ul>
-                        </li>
                     </ul>
-                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost</h4>
+                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">Boosting (e.g. AdaBoost) – Key Points</h4>
+                    <ul class="list-disc list-inside space-y-2 text-sm">
+                        <li><strong>Objective:</strong> Reduce bias (make a weak learner strong).</li>
+                        <li><strong>Base learner:</strong> Weak learners (e.g., decision stumps).</li>
+                        <li><strong>Execution:</strong> Sequential (next model learns from the previous one's errors).</li>
+                        <li><strong>Weighting:</strong> Misclassified points get higher weight in the next iteration.</li>
+                        <li><strong>Combination:</strong> Weighted vote of weak learners.</li>
+                        <li><strong>Famous Examples:</strong> AdaBoost, Gradient Boosting, XGBoost, LightGBM.</li>
+                        <li><strong>Bias/Variance:</strong> Bias is reduced, variance might increase slightly.</li>
+                        <li><strong>Overfitting:</strong> Sensitive to noise/outliers (because their weights are repeatedly increased).</li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost Formulas</h4>
                     <ul class="space-y-8">
                         <li><strong>Classifier Weight:</strong><div class="text-center mt-2">$$\alpha_t = \frac{1}{2} \ln(\frac{1 - \epsilon_t}{\epsilon_t})$$</div></li>
                         <li><strong>Data Weight Update:</strong><div class="text-center mt-2">$$D_{t+1}(i) \propto D_t(i) \exp(-\alpha_t y_i h_t(x_i))$$</div></li>
-                        <li><strong>Key Idea:</strong>
-                            <ul class="list-disc list-inside ml-4 mt-2 space-y-2 text-sm">
-                                <li>The weight of a datapoint is decreased in the next round if it is classified correctly.</li>
-                                <li>The weight of a datapoint is increased in the next round if it is classified incorrectly.</li>
-                            </ul>
-                        </li>
                         <li><strong>Final Classifier:</strong><div class="text-center mt-2">$$H(x) = \text{sign}\left(\sum_{t=1}^{T} \alpha_t h_t(x)\right)$$</div></li>
                     </ul>
                     <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600">AdaBoost Worked Example</h4>
